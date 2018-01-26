@@ -1,0 +1,120 @@
+
+.Product {
+  position: relative;
+  width: 100%;
+    background-color: #EFEFEF;
+    margin-bottom: 5px;
+}
+.Product h3{
+  color: #FF5656;
+}
+
+.image {
+  display: block;
+  width: auto;
+    height: 300px;
+    margin-left: -70px;
+    margin-top: -30px;
+}
+
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.modal-lg {
+    width: 90%;
+   }
+.single-left{
+  padding-left: 0px;
+}   
+  #results{
+
+  }
+#left{
+	display: block;
+}
+#right{
+
+}
+
+.contenedor{
+	background-image: url("../images/bg1.jpg");
+	background-repeat: repeat-y;
+}
+.crop{
+ float:left;
+ position:relative;
+ width:100%;
+ height:90px;
+ border:1px solid #ccc;
+ margin:.5em 10px .5em 0;
+ }
+.crop p{
+ margin:0;
+ position:absolute;
+ top:-20px;
+ left:-4px;
+ clip:rect(20px 250px 110px 5px); /* Agujero rectángulo de medida específica */
+ }
+ .botonBusqueda {
+ 	background-color: #FF5656;
+ 	color: #FFFFFF;
+ }
+ #compareBasket {
+ 	position: fixed;
+ 	right: 0;
+ 	z-index:9999;
+ 	border: #FF5656;
+ 	background-color: #FFFFFF;
+
+ }
+
+ #divLatimeB{
+background-image: url("../images/vlargeur.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 110px;
+
+ }
+ #divInaltimeB{
+background-image: url("../images/vhauteur.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 110px;
+
+ } 
+ #divRadiusB{
+background-image: url("../images/vdiametre.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 110px;
+
+ }
+ #searchBtn{
+  margin-top: 10px;
+ }
+ .product{
+border: white;
+    border-width: thin;
+    border-style: solid;
+        padding: 20px;
+   }
+  #menu1 .nav>li{
+    background-color: #000;
+
+  }
+  #menu1 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background-color: #ff4c4c;
+
+  }
+  .seasons_icons {
+    background: url("../images/sprites2.png") no-repeat;
+    display: inline-block;
+    width: 23px;
+    height: 28px;
+    background-position: -13px -27px;
+    vertical-align: middle;
+}

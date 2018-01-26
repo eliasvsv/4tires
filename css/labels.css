@@ -1,0 +1,165 @@
+.petrol{
+         background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 0px;
+    display: block;
+    width: 21px;
+    height: 18px;
+       background-repeat: no-repeat;
+    float: left;
+}
+.weat{
+      background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 -48px;
+    display: block;
+    width: 23px;
+    height: 18px;
+    margin-right: 2px;
+        float: left;
+               background-repeat: no-repeat;
+}
+.sound{
+    
+      background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 -24px;
+    display: block;
+    width: 23px;
+    height: 18px;
+    margin-right: 2px;
+        float: left;
+               background-repeat: no-repeat;
+}
+.label-A{
+     background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 -71px;
+    display: block;
+    width: 23px;
+    height: 18px;
+    margin-right: 2px;
+    background-repeat: no-repeat;
+}
+.label-B{
+     background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 -95px;
+       background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 2px;
+}
+.label-C{
+     background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 -119px;
+        background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 2px;
+}
+.label-D {
+     background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0px -143px;
+        background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 2px;
+}
+.label-E {
+    background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0px -167px;
+        background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 2px;
+}
+.label-F {
+    background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0px -191px;
+        background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 2px;
+}
+.label-G {
+    background-image: url(../images/xsprite-label.png.pagespeed.ic.d1d1QpxFpq.png);
+    background-position: 0 -215px;
+        background-repeat: no-repeat;
+    width: 26px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 2px;
+}
+.text-left{
+        margin-left: -12px;
+}
+#topSearch{
+        background-image: url(../images/xgsprite.png.pagespeed.ic.prEvnay8tR.png);
+        background-repeat: no-repeat;
+        background-position: 0 -41px;
+
+}
+#topSearch p {
+    background-color: #3d3d3d;
+    padding-left: 64px;
+    margin: 0;
+    height: 39px;
+    line-height: 39px;
+        text-transform: uppercase;
+            color: #fff;
+            font-family: 'Open Sans Semibold','Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+                        margin-left: 30px;
+
+}
+#ofer2{
+            background-image: url(../images/xgsprite.png.pagespeed.ic.prEvnay8tR.png);
+        background-repeat: no-repeat;
+    background-position: 0px -82px;
+
+}
+#ofer2 p {
+    background-color: #3d3d3d;
+    padding-left: 64px;
+    margin: 0;
+    height: 39px;
+    line-height: 39px;
+        text-transform: uppercase;
+            color: #fff;
+            font-family: 'Open Sans Semibold','Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+            margin-left: 30px;
+
+}
+
+#top-discount{
+        background-position: 0 0;
+                background-image: url(../images/xgsprite.png.pagespeed.ic.prEvnay8tR.png);
+        background-repeat: no-repeat;
+}
+#top-discount p {
+    background-color: #3d3d3d;
+    padding-left: 64px;
+    margin: 0;
+    height: 39px;
+    line-height: 39px;
+        text-transform: uppercase;
+            color: #fff;
+            font-family: 'Open Sans Semibold','Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+            margin-left: 30px;}
+
+.bloque{
+    height: 389px;
+    display: block;
+    background-color: #FFF;
+    margin:0;
+    margin-left: -15px;
+
+}
+.avatar{
+    display: block;
+    width: auto;
+    height: 300px;
+    margin-left: -70px;
+    margin-top: -30px;
+}
+

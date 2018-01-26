@@ -1,0 +1,42 @@
+<!doctype html>
+
+<head>
+
+   <!-- player skin -->
+   <link rel="stylesheet" href="skin/skin.css">
+
+   <!-- site specific styling -->
+   <style>
+   body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; padding-top: 5%; }
+   .flowplayer { width: 80%; }
+   </style>
+
+   <!-- for video tag based installs flowplayer depends on jQuery 1.7.2+ -->
+   <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+   <!-- include flowplayer -->
+<!-- Flowplayer library -->
+<script src="//releases.flowplayer.org/7.1.2/flowplayer.min.js"></script>
+<!-- Flowplayer hlsjs engine (light) -->
+<script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.light.min.js"></script>
+<style type="text/css">
+   .flowplayer {
+  background-color: #00abcd;
+}
+.flowplayer .fp-color-play {
+  fill: #eee;
+}
+
+</style>
+</head>
+
+<body>
+<div data-live="true" data-ratio="0.5625" data-share="false" class="flowplayer">
+ 
+   <video data-title="Live stream">
+<source type="application/x-mpegurl"
+        src="https://co-e1-p-e-aa1.cdn.mdstrm.com/video/h/580e40f1ae8008dd08abd931/592315a64d34a01b0998528a_592315a64d34a01b0998528e.mp4/index-v1-a1.m3u8?access_token=dmCUYjDIInI6vKEQboa30MDpy3DDUev9iuqj1wh5kVyOuksthhAAOJqRkrrFBRFq7jv8JFJqB00&es=co-e1-p-e-aa1.cdn.mdstrm.com&proto=https&ote=1507603118895&ot=BcHAe4N7PbxiKMoz85QgDw">
+   </video>
+ 
+</div>
+</body>

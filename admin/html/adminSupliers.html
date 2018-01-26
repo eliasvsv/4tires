@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div id="workarea" class="col-md-8">
+  	<div class="panel panel-default">
+  		<div class="panel-body">
+   			 <div class="row">
+   			 	<div id="comboSup" class="col-md-6"></div>
+   			 	<div class="col-md-6"></div>
+   			 </div>
+   			 <br>
+   			 <div class="row">
+   			 	<div class="col-md-12">
+   			 			 <form name="searchForm" id="searchForm" class="form-inline">
+         <input type="hidden" name="c" id="c" value="Products">
+ 		 <input type="hidden" name="f" id="f" value="getNexxonProduct2">
+ 		  <div class="col20 form-group">         
+             <label for="categorie"></label>       
+             <div id="categorie" class="form-group"  ></div>        
+          </div>     
+		 <div class="col20 form-group">
+		 	<label for="latimeid" class="latime"></label>
+		 	<div id="Latime" class="form-group" ></div>
+		 </div>									
+		 <div class="col20 form-group">
+			<label for="inaltime" class="inaltime"></label>							
+			<div id="Inaltime" class="form-group" ></div>							 
+		 </div>																									
+		 <div class="col20 form-group">							
+			<label for="diametru" class="diametru"></label>							
+			<div id="Radius" class="form-group"  ></div>							 
+		 </div>							
+     <div class="col20 form-group">         
+                <label for="brand"></label>    
+                <div id="brand" class="form-group"  ></div>     
+           </div>       
+													  
+			<br class="clear">						
+			 </form>
+   			 	</div>
+   			 </div>
+  		</div>
+	</div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+<script type="text/javascript">
+function getSuppliers() {
+$.post( "router.php", { c: "Products", f: "getSuppliers" })
+  .done(function( data ) {
+    $('#comboSup').html(data);
+    getFilter('brand'); 
+      }); 
+}
+	$( document ).ready(function() {
+ getSuppliers();
+  
+
+
+
+
+
+
+
+});
+	$("#categorie").change(function(event){
+  event.preventDefault();
+alert('si');
+ return false;
+});
+</script>

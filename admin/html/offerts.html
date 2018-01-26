@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-6">
+  	 <form name="searchForm" id="searchForm" class="form-inline">
+         <input type="hidden" name="c" id="c" value="Products">
+ 		 <input type="hidden" name="f" id="f" value="getNexxonProduct2">
+		 <div class="col20 form-group">
+		 	<label for="latimeid" class="latime"></label>
+		 	<div id="Latime" class="form-group" ></div>
+		 </div>									
+		 <div class="col20 form-group">
+			<label for="inaltime" class="inaltime"></label>							
+			<div id="Inaltime" class="form-group" >.col-md-1</div>							 
+		 </div>																									
+		 <div class="col20 form-group">							
+			<label for="diametru" class="diametru"></label>							
+			<div id="Radius" class="form-group"  >.col-md-1</div>							 
+		 </div>							
+         <div class="col20 form-group">         
+             <label for="categorie" class="diametru"></label>       
+             <div id="categorie" class="form-group"  >.col-md-1</div>        
+          </div>         
+          <div class="col20 form-group">         
+                <label for="brand" class="diametru"></label>    
+                <div id="brand" class="form-group"  >.col-md-1</div>     
+           </div>       
+			<span class="col20 text-center">						
+				<button onclick="getTires()" type="button" class="btn btnBlack">Afiseaza 						rezultate</button>
+			</span>												  
+			<br class="clear">						
+			 </form>
+
+
+  </div>
+  <div class="col-md-6">
+  	<div class="panel panel-default">
+  <div class="panel-heading">offer</div>
+  <div id="promoContent" class="panel-body">
+    Panel content
+  </div>
+  <p>Date Start: <input type="text" id="dateStart"></p>
+    <p>Date End: <input type="text" id="dateEnd"></p>
+    <button type="button" onclick="cleanPromo()" class="btn btn-danger">Clean</button>
+    <button type="button" onclick="createOffer()" class="btn btn-success">Create offer</button>
+</div>
+
+
+
+  </div>
+<div class="row">
+  <div class="col-md-5">
+  	<table id="results" class="table table-striped">
+		
+		</table>
+
+  </div>
+  <div class="col-md-5">
+  	
+
+  </div>
+  <div class="col-md-2"></div>
+</div>
+<script type="text/javascript">
+
+$( document ).ready(function() {
+  getSuppliers();
+   getFilter('Latime');
+getFilter('Inaltime');
+getFilter('Radius');
+getFilter('categorie');
+getFilter('brand'); 
+getPromo();
+  $( function() {
+    $( "#dateStart" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
+  } );
+    $( function() {
+    $( "#dateEnd" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
+  } );
+});
+
+
+
+
+</script>

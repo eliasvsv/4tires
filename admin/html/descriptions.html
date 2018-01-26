@@ -1,0 +1,43 @@
+
+<html>
+<head>
+  <script type="text/javascript" src="tinymce.min.js"></script>
+
+  <script type="text/javascript">
+    tinyMCE.init({
+      mode : "textareas"
+    });
+    </script>
+
+</head>
+<body>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  		    <table class="table table-bordered">
+      <tr><th>Brand</th><th>Profil</th></tr>
+      <tr><td id="comboBrands"></td><td id="comboProfil"></td></tr>
+    </table>
+    <table class="table table-bordered">
+      <tr><th>increse Price %</th></tr>
+      <tr><td>
+      <div class="input-group">
+      <input id="price" type="text" class="form-control" placeholder="%">
+      <span class="input-group-btn">
+        <button onclick="updateNexxonPrices()" class="btn btn-success" type="button">Update Price</button>
+      </span>
+    </div><!-- /input-group -->
+      </td></tr>
+    </table>
+		  <textarea></textarea>
+		  <button type="button" onclick="updateNexxonDescriptions()" class="btn btn-success btn-lg">Update Descriptions</button>
+ </div>
+  <div class="col-md-2"></div>
+</div>
+<script type="text/javascript">
+	  $( document ).ready(function() {
+getBrandsCombo();
+});
+</script>
+</body>
+</html>

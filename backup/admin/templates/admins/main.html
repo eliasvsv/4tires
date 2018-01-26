@@ -1,0 +1,86 @@
+<div class="panel panel-default">
+  <div id="usersTable" class="panel-body">
+ <table class="table table-striped">
+ <tr><th align="right" colspan="5"><!-- Button trigger modal -->
+<button  type="button" class="btn btn-success pull-right btn-xs" data-toggle="modal" data-target="#addUserModal">
+  Add User +
+</button></th></tr>
+<tr><th>#</th><th>Name</th><th>Email</th><th>Modify</th><th>Delete</th></tr>
+
+ </table>
+  </div>
+</div>
+<!-- Add user part -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="adduser">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addusermodal">Add User</h4>
+      </div>
+      <div class="modal-body">
+        <form id="addUserForm" name="addUserForm">
+  <div class="form-group">
+    <label for="fullname">Full Name</label>
+    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full Name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="user">User</label>
+    <input type="text" class="form-control" id="user" name="user" placeholder="User">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+ </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" onclick="addUser()" class="btn btn-primary">Register</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- end add user -->
+<!-- Modify -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUser">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modify">Modify User</h4>
+      </div>
+      <div class="modal-body">
+        <form id="editUserForm" name="editUserForm">
+  <div class="form-group">
+    <label for="fullname">Full Name</label>
+    <input type="hidden"  id="idM" name="idM" value="" >
+    <input type="text" class="form-control" id="fullNameM" name="fullNameM" placeholder="Full Name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="emailM" name="emailM" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="user">User</label>
+    <input type="text" class="form-control" id="userM" name="userM" placeholder="User">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="passwordM" name="passwordM" placeholder="Password">
+  </div>
+ </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" onclick="editUser()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- end add user -->
+<script type="text/javascript">
+	getUsers();
+</script>

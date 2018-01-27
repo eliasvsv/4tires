@@ -24,15 +24,15 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
     <title>Titlu produs | 4Tires.ro</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="../css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-  	<link rel="stylesheet" href="css/bootstrap-select.css">
+  	<link rel="stylesheet" href="../css/bootstrap-select.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,10 +40,10 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.tiresleader.com/static/css/style.css?5">
 <style type="text/css">
 	body{background-color: #FFF;}
@@ -109,7 +109,7 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-				<a class="navbar-brand logo logoProd" href="index.html" title="Acasa"><img src="img/4tires-logo.png" alt="4Tires.ro"></a>
+				<a class="navbar-brand logo logoProd" href="index.html" title="Acasa"><img src="../img/4tires-logo.png" alt="4Tires.ro"></a>
 				</div>
 				
 				<div class="col-md-8 alignright">
@@ -161,8 +161,8 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
 					</ul>
 				</div>
 				<!-- flexslider -->
-					<script defer src="js/jquery.flexslider.js"></script>
-					<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+					<script defer src="../js/jquery.flexslider.js"></script>
+					<link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="screen" />
 					<script>
 					// Can also be used with $(document).ready()
 					$(window).load(function() {
@@ -174,7 +174,7 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
 					</script>
 				<!-- flexslider -->
 				<!-- zooming-effect -->
-					<script src="js/imagezoom.js"></script>
+					<script src="../js/imagezoom.js"></script>
 				<!-- //zooming-effect -->
 			</div>
 			<div class="col-md-8 single-right">
@@ -402,7 +402,7 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
 					</div>			        					            	      
 				</div>	
 			</div>
-			<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+			<script src="../js/easyResponsiveTabs.js" type="text/javascript"></script>
 			<script type="text/javascript">
 				$(document).ready(function () {
 					$('#horizontalTab1').easyResponsiveTabs({
@@ -653,7 +653,7 @@ $product=json_decode( call_user_func_array(array($test,"getProductById"),$args))
 			
 		});
 	</script>
-	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+	<script type="text/javascript" src="../js/jquery.flexisel.js"></script>
     <script>
 		
 	function overlayhover(id)
@@ -721,7 +721,7 @@ $('.overlay').on('mouseleave', function(e) {
 })
 	</script>
 	
-	<script src="js/minicart.js"></script>
+	<script src="../js/minicart.js"></script>
 	<script>
         t4ls.render();
 

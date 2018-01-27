@@ -1,5 +1,0 @@
-RewriteEngine On
-RewriteBase /web/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([a-zA-Z0-9-]*)/([a-zA-Z0-9-]*)/([a-zA-Z0-9-]*)/?$ /web/search.php?Latime=$1&Inaltime=$2&Radius=$3 [NC,L]

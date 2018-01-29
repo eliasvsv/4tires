@@ -641,7 +641,7 @@ function getProductById(id) {
 
   });*/
 	// getProductById
-  window.open('produs.php?id='+id);
+  window.open('produs/'+id);
 }
    function searchProducts(p){
 

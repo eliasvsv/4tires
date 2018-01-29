@@ -117,8 +117,9 @@ public function searchProducts()
 
 //*********************************************************************************************************************************************************************
 //*********************************************************************************************************************************************************************
+			$link="anvelope/".$fila['sezon']."/".$fila['Brand']."/".$fila['latime'].$fila['inaltime'].$fila['radius']."/".$fila['CODE'];
 $result.="<div class=\"col-md-3 product\">
-			<h4 onclick='getProductById(\"".$fila["CODE"]."\")'>Anvelope  ".ucfirst(strtolower($fila["categorie"]))." ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."  ".ucfirst(strtolower($fila["Brand"]))."<br>".ucfirst(strtolower($fila["Profil"]))." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$fila["load_index"].$fila["speed_index"]."  </h4>
+			<h4 onclick='getProductById(\"".$link."\")'>Anvelope  ".ucfirst(strtolower($fila["categorie"]))." ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."  ".ucfirst(strtolower($fila["Brand"]))."<br>".ucfirst(strtolower($fila["Profil"]))." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$fila["load_index"].$fila["speed_index"]."  </h4>
 			<div class='crop'>
 			<p> 
 		  <img  data-toggle=\"modal\" data-target=\"#image".$img."\" src=\"http://".$fila["image_url"]."\" alt=\"Avatar\" class=\"image\"></p></div>

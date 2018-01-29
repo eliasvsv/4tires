@@ -114,11 +114,12 @@ $sql.="and price<>'0' order by price asc";
 			if ($fila['idSupplier']=='3') {
 				$msg="Livrarea: in 7 zile lucratoare dupa cumparare.";
 			}
+			$link="anvelope/".$fila['sezon']."/".$fila['sezon']."/".$fila['brand']."/".$fila['sezon']."/".$fila['latime'].$fila['inaltime'].$fila['radius']."/".$fila['id'];
 			$labes="<div id=\"labels\"><div class=\"row\"><div class=\"col-md-4 petrol\"></div><div class=\"col-md-4 weat\"></div><div class=\"col-md-4 sound\"></div></div>    
 <div class=\"row\"><div class=\"col-md-4 label-".trim($fila["rulare"])."\"></div><div class=\"col-md-4 label-".trim($fila["Franare"])."\"></div><div class=\"col-md-4\"><p class=\"text-left\">".$fila["fundal"]."dB</p></div></div><span class=\"label label-success\">Stock: </span>  <span class=\"badge\">".$fila["stock"]."</span> </div>";
 				
 				$result.="<div class='row Product'><div class=\"col-md-2\"><button onclick=\"compare('".$fila["CODE"]."')\" class='btn btnBlack btn-sm' >Compare</button></div><div class=\"col-md-2 crop\"><p> 
-		  <img  data-toggle=\"modal\" data-target=\"#image".$img."\" src=\"http://".$fila["image_url"]."\" alt=\"Avatar\" class=\"image\"></p></div><div onclick='getProductById(\"".$fila["CODE"]."\")' class=\"col-md-3\">  <h4>Anvelope ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]." ".$fila["load_index"].$fila["speed_index"]."<br>".ucfirst(strtolower($fila["Brand"]))." ".ucfirst(strtolower($fila["Profil"]))." </h4></div><div class=\"col-md-2\"> 
+		  <img  data-toggle=\"modal\" data-target=\"#image".$img."\" src=\"http://".$fila["image_url"]."\" alt=\"Avatar\" class=\"image\"></p></div><div onclick='getProductById(\"".$link."\")' class=\"col-md-3\">  <h4>Anvelope ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]." ".$fila["load_index"].$fila["speed_index"]."<br>".ucfirst(strtolower($fila["Brand"]))." ".ucfirst(strtolower($fila["Profil"]))." </h4></div><div class=\"col-md-2\"> 
 		  <h5>Anvelope ".ucfirst(strtolower($fila["categorie"]))."</h5>".$labes."</div> <div class=\"col-md-1\"><h3>".number_format($fila["price"]*1.01,2,'.','')." Lei</h3><br><h5>$msg</h5>
            </div><div class=\"col-md-1\"><br><div class=\"input-group\"><input id='qyt".$img."' type=\"text\" class=\"form-control\" placeholder=\"0.00\" aria-describedby=\"basic-addon1\">   <span class=\"input-group-btn\"><button onclick=\"setBasket('".$fila['CODE']."',$('#qyt".$img."').val(),'".number_format($fila["price"]*1.01,2,'.','')."')\" class=\"btn btn-danger\">Add</span></button></span>
 </div></div></div>
@@ -131,6 +132,8 @@ $sql.="and price<>'0' order by price asc";
     </div>
   </div>
 </div>";
+
+//produs.php?type=$1&sezon=$2&brand=$3&size=$4&id=$5
 $img++;
 		} 
 		//echo $sql;

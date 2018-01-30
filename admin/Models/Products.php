@@ -473,6 +473,22 @@ public function getImageDinamic(){
 		return "ok";
 
 }
+
+public function getLoadIndex($value)
+{
+	$sql="SELECT kg  FROM loadindextable WHERE `index`='$value'";
+	$data=$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+	$item = $data->fetch_assoc();
+	return $item["kg"];
+}
+public function getSpeedIndex($value)
+{
+	$sql="select kmh  from speedindextable WHERE `index`='$value'";
+	$data=$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+	$item = $data->fetch_assoc();
+	return $item["kmh"];
+}
+
 }
 
 ?>

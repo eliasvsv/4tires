@@ -44,7 +44,7 @@ $product = new Models\Html;
     <script src="js/compare.js"></script>
       <link rel="stylesheet" href="css/busqueda.css">
       <link rel="stylesheet" type="text/css" href="css/labels.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.tiresleader.com/static/css/style.css?5">
+<!--      <link rel="stylesheet" type="text/css" href="https://cdn.tiresleader.com/static/css/style.css?5"> -->
       <style type="text/css">
 	#divboLoad_index{
 		width: 100px;

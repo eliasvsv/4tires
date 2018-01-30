@@ -176,7 +176,7 @@ $base="http://localhost/web";
 					</script>
 				<!-- flexslider -->
 				<!-- zooming-effect -->
-					<script src="../js/imagezoom.js"></script>
+					<script src="<?php echo $base;?>/js/imagezoom.js"></script>
 				<!-- //zooming-effect -->
 			</div>
 			<div class="col-md-8 single-right">
@@ -204,6 +204,8 @@ $base="http://localhost/web";
                         <span class="labelNoiseVal"><?php echo trim($product->fundal) ?></span>
                     </div>
                 </div>
+                <p>Anvelope pentru  <?php echo  $product->sezon ;?> cu dimensiunile (dimension of tires) pentru. Indicele de viteza este <?php echo  $product->speed_index ;?> iar acest lucru arata ca anvelopele permit o viteza maxima de  <?php echo $test->getSpeedIndex( $product->speed_index);?>. 
+Indicele de sarcina <?php echo $product->load_index;?> semnifica o capacitate de incarcare de <?php echo $test->getLoadIndex( $product->load_index);?> kilograme pe fiecare roata.</p>
 				</div>
 				<div class="color-quality">
 					<div class="color-quality-left">

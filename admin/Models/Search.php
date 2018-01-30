@@ -117,7 +117,8 @@ public function searchProducts()
 
 //*********************************************************************************************************************************************************************
 //*********************************************************************************************************************************************************************
-			$link="anvelope/".$fila['sezon']."/".$fila['Brand']."/".$fila['latime'].$fila['inaltime'].$fila['radius']."/".$fila['CODE'];
+//produs.php?type=$1&sezon=$2&size=$3&brand=$4&profil=$5&speedIndex=$6&loadIndex=$7&id=$8
+			$link="".ucfirst(strtolower('anvelope'))."-".ucfirst(strtolower($fila['sezon']))."-".$fila['latime'].$fila['inaltime'].$fila['radius']."-".ucfirst(strtolower($fila['Brand']))."-".ucfirst(strtolower($fila['Profil']))."-".$fila['load_index']."-".$fila['speed_index']."-".$fila['CODE'].".html";
 $result.="<div class=\"col-md-3 product\">
 			<h4 onclick='getProductById(\"".$link."\")'>Anvelope  ".ucfirst(strtolower($fila["categorie"]))." ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."  ".ucfirst(strtolower($fila["Brand"]))."<br>".ucfirst(strtolower($fila["Profil"]))." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$fila["load_index"].$fila["speed_index"]."  </h4>
 			<div class='crop'>

@@ -67,19 +67,19 @@ public function searchProducts()
 			}
 		}
 		//******************************************
-	$sql2=$sql."  order by price asc";
+	$sql2=$sql." and price<>0  order by price asc";
 
 		$data2 = $this->mysqli->retorno($sql2) or die(mysqli_error($this->mysqli));
 			$total=mysqli_num_rows($data2);
 			$paginas= ceil($total/24);
 			//echo mysqli_num_rows($data2);
 			if ($args[5]=='1') {
-			$sql.="  order by price asc  limit ". ($args[5]*24)  ;
+			$sql.=" and price<>0  order by price asc  limit ". ($args[5]*24)  ;
 		//echo $sql;
 			}
 			else{
 				$inicio=(($args[5]-1)*24)+1;
-					$sql.="order by price asc  limit ". $inicio .",24" ;
+					$sql.=" and price<>0 order by price asc  limit ". $inicio .",24" ;
 			}
 			//echo $sql;
 

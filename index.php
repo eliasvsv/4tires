@@ -206,6 +206,9 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
        display: table-header-group;
     }
 }
+.imgd{
+  max-height: 100px;
+}
 </style>
 </head>
 

@@ -67,21 +67,21 @@ public function searchProducts()
 			}
 		}
 		//******************************************
-	$sql2=$sql." and price<>0  order by price asc";
+	$sql2=$sql." and price>5  order by price asc";
 
 		$data2 = $this->mysqli->retorno($sql2) or die(mysqli_error($this->mysqli));
 			$total=mysqli_num_rows($data2);
 			$paginas= ceil($total/24);
 			//echo mysqli_num_rows($data2);
 			if ($args[5]=='1') {
-			$sql.=" and price<>0  order by price asc  limit ". ($args[5]*24)  ;
+			$sql.=" and price>5  order by price asc  limit ". ($args[5]*24)  ;
 		//echo $sql;
 			}
 			else{
 				$inicio=(($args[5]-1)*24)+1;
-					$sql.=" and price<>0 order by price asc  limit ". $inicio .",24" ;
+					$sql.=" and price>5 order by price asc  limit ". $inicio .",24" ;
 			}
-			//echo $sql;
+			echo $sql;
 
 		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 		
@@ -119,11 +119,19 @@ public function searchProducts()
 //*********************************************************************************************************************************************************************
 //produs.php?type=$1&sezon=$2&size=$3&brand=$4&profil=$5&speedIndex=$6&loadIndex=$7&id=$8
 			$link="".ucfirst(strtolower('anvelope'))."-".ucfirst(strtolower($fila['sezon']))."-".$fila['latime'].$fila['inaltime'].$fila['radius']."-".ucfirst(strtolower($fila['Brand']))."-".ucfirst(strtolower($fila['Profil']))."-".$fila['load_index']."-".$fila['speed_index']."-".$fila['CODE'].".html";
+
+		$img2="";
+		  if($fila["image_url"]==""){
+	$img2="images/2/69.png";
+		  }
+		  else{
+		  	$img2="http://".$fila["image_url"];
+		  }
 $result.="<div class=\"col-md-3 product\">
 			<h4 onclick='getProductById(\"".$link."\")'>Anvelope  ".ucfirst(strtolower($fila["categorie"]))." ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."  ".ucfirst(strtolower($fila["Brand"]))."<br>".ucfirst(strtolower($fila["Profil"]))." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$fila["load_index"].$fila["speed_index"]."  </h4>
 			<div class='crop'>
 			<p> 
-		  <img  data-toggle=\"modal\" data-target=\"#image".$img."\" src=\"http://".$fila["image_url"]."\" alt=\"Avatar\" class=\"image\"></p></div>
+		  <img  data-toggle=\"modal\" data-target=\"#image".$img."\" src=\"".$img2."\" alt=\"Avatar\" class=\"image\"></p></div>
 		  	<h3>".number_format($fila["price"]*1.01,2,'.','')." Lei</h3>
 		  
 		  	".$labes."

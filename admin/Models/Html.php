@@ -148,7 +148,7 @@ $i=1;
 			$i++;
 		}
 		$result.="<button class=\"btn btn-primary list-group-item\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse$cat\" aria-expanded=\"false\" aria-controls=\"collapse$cat\">
-  <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>
+  Arata mai mult            <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>
 </button>
 <div class=\"collapse\" id=\"collapse$cat\">
   <div class=\"well\">
@@ -157,6 +157,7 @@ $i=1;
 </div>
 
 ";
+
 		return $result;
 }//end function
 
@@ -245,6 +246,10 @@ public function SearchBox(){
   </div>
 
 	<?php
+}
+
+public function batteriesSearch(){
+	
 }
 
 } // end class

@@ -84,7 +84,7 @@ padding-top: 20px;
   .done(function( data ) {
     console.log(data);
  if (data==1) {
-location.href="index2.php";
+location.href="index.php";
  }
   });
   } 

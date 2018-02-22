@@ -117,19 +117,46 @@ public function getBrandsList(){
 			
 			$result.=" <button type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["Brand"]."</button>";
 		}
+		$result.="<button class=\"btn btn-primary list-group-item\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseExample\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
+  <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>
+</button>
+<div class=\"collapse\" id=\"collapseExample\">
+  <div class=\"well\">
+    ...
+  </div>
+</div>
+
+";
 		return $result;
 }//end function
 public function getBlockAutoturisme($cat){
 
-	$sql="SELECT * FROM block_".strtolower($cat)." limit 5";
+	$sql="SELECT * FROM block_".strtolower($cat)." ";
 	$result="";
-
+	$more="";
+$i=1;
 	$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 		while ($fila = $data->fetch_assoc()) 
 		{
+			if($i>=5){
+				$more.=" <button onclick=\"searchProducts2('1','".$fila["latime"]."','".$fila["inaltime"]."','".$fila["radius"]."','".$cat."')\" type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."</button>";
+			}
+			else{
+				$result.=" <button onclick=\"searchProducts2('1','".$fila["latime"]."','".$fila["inaltime"]."','".$fila["radius"]."','".$cat."')\" type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."</button>";
+			}
 			
-			$result.=" <button onclick=\"searchProducts2('1','".$fila["latime"]."','".$fila["inaltime"]."','".$fila["radius"]."','".$cat."')\" type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."</button>";
+			$i++;
 		}
+		$result.="<button class=\"btn btn-primary list-group-item\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse$cat\" aria-expanded=\"false\" aria-controls=\"collapse$cat\">
+  <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>
+</button>
+<div class=\"collapse\" id=\"collapse$cat\">
+  <div class=\"well\">
+   ".$more."
+  </div>
+</div>
+
+";
 		return $result;
 }//end function
 

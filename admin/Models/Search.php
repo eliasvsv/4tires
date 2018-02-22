@@ -81,7 +81,7 @@ public function searchProducts()
 				$inicio=(($args[5]-1)*24)+1;
 					$sql.=" and price>5 order by price asc  limit ". $inicio .",24" ;
 			}
-			echo $sql;
+			//echo $sql;
 
 		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 		

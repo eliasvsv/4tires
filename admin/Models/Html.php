@@ -169,8 +169,8 @@ public function SearchBox(){
   <ul class="nav  nav-pills" role="tablist">
     <li role="presentation" class="active"><a href="#anvelope" aria-controls="home" role="tab" data-toggle="tab">Anvelope</a></li>
     <li role="presentation"><a href="#jante" aria-controls="profile" role="tab" data-toggle="tab">Jante</a></li>
-    <li role="presentation"><a href="#acumulatori" aria-controls="messages" role="tab" data-toggle="tab">Acumulatori</a></li>
-    <li role="presentation"><a href="#uleiuri" aria-controls="settings" role="tab" data-toggle="tab">Accesorii auto</a></li>
+    <li role="presentation"><a href="#acumulatori" aria-controls="acumulatori" role="tab" data-toggle="tab">Acumulatori</a></li>
+    <li role="presentation"><a href="#camere" aria-controls="camere" role="tab" data-toggle="tab">Camere de aer</a></li>
     <li role="presentation"><a href="#accesorii" aria-controls="settings" role="tab" data-toggle="tab">Lanturi auto</a></li>
     <li role="presentation"><a href="#hotel" aria-controls="settings" role="tab" data-toggle="tab">Hotel anvelope</a></li>
   </ul>
@@ -241,15 +241,91 @@ public function SearchBox(){
 <iframe src="https://configurator.alcar-wheelbase.ro/default_jante.aspx?did=34298&showtyres=False&sp=True&userdata=|||||" id="ifrmJante" width="1200" height="1000px" frameborder="0" scrolling="yes"></iframe>
     -->
     <div role="tabpanel" class="tab-pane" id="jante"><iframe src="https://configurator.alcar-wheelbase.ro/default_jante.aspx?did=34298&showtyres=False&sp=True&userdata=|||||" id="ifrmJante" width="1200" height="1000px" frameborder="0" scrolling="yes"></iframe></div>
-    <div role="tabpanel" class="tab-pane" id="messages">.3..</div>
-    <div role="tabpanel" class="tab-pane" id="settings">.4..</div>
+    <div role="tabpanel" class="tab-pane" id="acumulatori">
+    	
+   		<div class="panel panel-default">
+  <div class="panel-body">
+
+   <div class="row">
+                 <div class="list-group">
+              <div  class="col-md-4"><button id="ampB" type="button" class="list-group-item">  <?php echo $this->getBatteriesAMP(); ?></button></div>
+              <div class="col-md-4"><button id="subcategorie" type="button" class="list-group-item">  <?php echo $this->getBatterisSub(); ?></button></div>
+              <div class="col-md-4">    <button onclick="searchBatteries()" id="amp" type="button" class="btn btn-success btn-lg btn-block">Search</button></div>
+
+                                </div>
+          </div>
+  </div>
+</div> 		
+   
+   </div>
+   <!--*****************************************************************************************************************************************************************************************************************-->
+    <div role="tabpanel" class="tab-pane" id="camere">
+    			<div class="row">
+              			<div class="col-md-4"><?php echo  $this->getAirCamerasSize('Dimensiune'); ?></div>
+              			<div class="col-md-4"><?php echo  $this->getAirCamerasSize('Diametru'); ?></div>
+              			<div class="col-md-4"><?php echo  $this->getAirCamerasSize('TipValva'); ?></div>
+              		</div>
+
+              	<div class="row">
+              		<div class="col-md-4"></div>
+              		<div class="col-md-4"><button onclick="SeachCameras()" type="button" class="btn btn-success btn-lg btn-block">Search</button></div>
+              		<div class="col-md-4"></div>
+              	</div>	
+
+
+    	</div>
   </div>
 
 	<?php
 }
 
-public function batteriesSearch(){
-	
+public function getBatteriesAMP(){
+	$result="<div class=\"form-group\">
+  <label for=\"amp\">amp</label><select class=\"form-control Inaltime\" id=\"comboAmp\" name=\"comboAmp\" >";
+  $result.="<option value=\"\">Default</option>";
+
+	 $sql="SELECT DISTINCT(TRIM(SUBSTR(`desc`,(LOCATE('Ah',`desc`)-3 ),6))) AS amp FROM impaaccesories WHERE categorie='Acumulatori'  ";
+		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+		while ($fila = $data->fetch_assoc()) 
+		{
+			$result.="<option value=\"".trim($fila['amp'])."\">".trim($fila['amp'])."</option>";
+		}
+		$result.="</select></div>";
+		
+		return $result;
+}
+
+public function getBatterisSub()
+{
+	$sql="SELECT DISTINCT(subcategorie) FROM impaaccesories	WHERE categorie='Acumulatori' ";
+	$result="<div class=\"form-group\">
+  <label for=\"categorie\">Categorie</label><select class=\"form-control Inaltime\" id=\"subcategorieCombo\" name=\"subcategorieCombo\" >";
+  $result.="<option value=\"\">Default</option>";
+
+		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+		while ($fila = $data->fetch_assoc()) 
+		{
+			$result.="<option value=\"".trim($fila['subcategorie'])."\">".trim($fila['subcategorie'])."</option>";
+		}
+		$result.="</select></div>";
+		
+		return $result;
+}
+
+public function getAirCamerasSize($filter){
+	$result="<div id=\"div".$filter."\" class=\"form-group\">
+  <label for=\"$filter\">".$filter."</label><select class=\"form-control $filter\" id=\"combo$filter\" name=\"combo$filter\" >";
+  $result.="<option value=\"\">Default</option>";
+
+		$sql="select DISTINCT(".$filter.") from aircameras order by ".$filter."";
+				$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+		while ($fila = $data->fetch_assoc()) 
+		{
+			$result.="<option value=\"".trim($fila[$filter])."\">".trim($fila[$filter])."</option>";
+		}
+		$result.="</select></div>";
+		
+		return $result;
 }
 
 } // end class

@@ -127,7 +127,7 @@ public function searchProducts()
 		  else{
 		  	$img2="http://".$fila["image_url"];
 		  }
-$result.="<div class=\"col-md-3 product\">
+$result.="<div class=\"col-md-3 product\"><article>
 			<h4 onclick='getProductById(\"".$link."\")'>Anvelope  ".ucfirst(strtolower($fila["categorie"]))." ".$fila["sezon"]." <br>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."  ".ucfirst(strtolower($fila["Brand"]))."<br>".ucfirst(strtolower($fila["Profil"]))." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$fila["load_index"].$fila["speed_index"]."  </h4>
 			<div class='crop'>
 			<p> 
@@ -136,7 +136,7 @@ $result.="<div class=\"col-md-3 product\">
 		  
 		  	".$labes."
 		  	<button onclick=\"compare('".$fila["CODE"]."')\" class='btn btnBlack ' >Compare</button><button onclick=\"setBasket('".$fila['CODE']."',$('#qyt".$img."').val(),'".number_format($fila["price"]*1.01,2,'.','')."')\" class=\"btn btn-danger\">Buy</span></button>
-		 ".$fila['idSupplier']." </div>";
+		 ".$fila['idSupplier']."</article> </div>";
 
 
 //******************************************************************************************************************************************************
@@ -255,6 +255,121 @@ $pagination.="
 }
 
 
+public function searchBatteries()
+	{	
+	$args = func_get_args();
+		$ii= count($args);
+		$j=0;
+		$sql="	SELECT * FROM impaaccesories ";
+	
+		//******************************************
+		if($args[2]<>''){
+			if ($j==0) {
+				$sql.=" where  `desc` like '%".$args[2]."%'";
+				$j=1;
+			}
+			else{
+				$sql.="and  latime='".$args[2]."'";
+			}
+		}
+		//******************************************
+		if($args[3]<>''){
+			if ($j==0) {
+				$sql.=" where  subcategorie='".$args[3]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  subcategorie='".$args[3]."'";
+			}
+		}
+
+	$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+
+
+$res="";
+	while ($fila = $data->fetch_assoc()) 
+		{
+			$res.="<div class=\"row\">
+					<div class='col-md-2'><img src=\"".$fila["image"]."\" alt=\"".$fila["desc"]." \" class=\"img-thumbnail\"></div>
+				<div class='col-md-6'><h3>".$fila["desc"]."</h3></div>
+				<div class='col-md-4'><h3><p class=\"text-danger\">".$fila["price"]."</p></div>
+			</div>
+			";
+
+		}
+
+
+
+
+return $res;
+
+
+
+
+
+
+
+	}//end function
+
+
+public function getCameras()
+{
+$args = func_get_args();
+		$ii= count($args);
+		$j=0;
+		$sql="	SELECT * FROM cameras ";
+	
+		//******************************************
+		if($args[2]<>''){
+			if ($j==0) {
+				$sql.=" where  Dimensiune = '".$args[2]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  Dimensiune='".$args[2]."'";
+			}
+		}
+		//******************************************
+		if($args[3]<>''){
+			if ($j==0) {
+				$sql.=" where  Diametru='".$args[3]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  Diametru='".$args[3]."'";
+			}
+		}
+		//******************************************
+		if($args[4]<>''){
+			if ($j==0) {
+				$sql.=" where  TipValva='".$args[4]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  TipValva='".$args[4]."'";
+			}
+		}
+
+	$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+
+
+$res="";
+	while ($fila = $data->fetch_assoc()) 
+		{
+			$res.="<div class=\"row\">
+					<div class='col-md-2'><img src=\"".$fila["image"]."\" alt=\"".$fila["desc"]."\" class=\"img-thumbnail\"></div>
+				<div class='col-md-6'><h3>".$fila["desc"]."</h3></div>
+				<div class='col-md-4'><h3><p class=\"text-danger\">".$fila["price"]."</p></div>
+			</div>
+			";
+
+		}
+
+
+
+
+return $res;
+}
 
 
 

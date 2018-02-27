@@ -8,12 +8,22 @@ $product = new Models\Html;
 <html lang="ro">
 
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114840378-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114840378-1');
+</script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Importator si distribuitor de anvelope.Distribuim toata gama de anvelope pentru toate tipurile de autovehicule.Anvelope pentru autoturisme,4X4,autoutilitare,autocamioane,autocare,utilaje agricole, utilaje industriale.Anvelope pentru toate sezoanele vara,iarna si allseason.">
+    <meta name="keywords"  content="anvelope, cauciucuri, anvelope de iarna, anvelope iarna, cauciucuri iarna, pneuri auto, anvelope auto, anvelope de vara, anvelope ieftine, anvelope vara, anvelopa, preturi anvelope, cauciucuri vara, pneuri,anvelope autoturisme,anvelope 4x4,anvelope camioane,anvelope autobuz,anvelope industriale,anvelope agricole,camere de aer,acumulatori auto,bateri auto,acumulatori autoturisme,acumulatori camioane,acumulatori motociclete,jante auto,jante autoturisme,jante 4x4 ,jante aliaj, jante otel,jante tabla,lanturi antiderapante,lanturi autoutilitare,lanturi pentru anvelope,anvelope pentru autoturisme, anvelope pentru autoutilitare,anvelope pentru off road ,anvelope pentru camioane,anvelopepentru autojuse ,anvelope pentru utilaje industriale,anvelope pentru utilaje agricole ,anvelope pentru stiviutoare,anvelope pentru remorci,anvelope pentru utilaje forestiere,anvelope pentru remorci, hotel anvelope,accesorii auto, anvelope atv,anvelope pentru motociclete  " />
+    <meta name="author" content="4tires">
 
     <title>Home | 4Tires.ro</title>
 
@@ -209,6 +219,9 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 .imgd{
   max-height: 100px;
 }
+#amp {
+    margin-top: 5px;
+}
 </style>
 </head>
 
@@ -259,7 +272,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
-				<a class="navbar-brand logo" href="index.html" title="Acasa"><img src="img/4tires-logo.png" alt="4Tires.ro"></a>
+				<a class="navbar-brand logo" href="index.php" title="Acasa"><img src="img/4tires-logo.png" alt="4Tires.ro"></a>
 				</div>
 				
 				<div class="col-lg-8 alignright">
@@ -659,6 +672,23 @@ $("#results").html(data);
 $("#results").html(data);
   });
   } 
+
+    function searchBatteries(){
+    $.post( "admin/router.php", { c: "Search", f: "searchBatteries",amp:$("#comboAmp").val(),subcategorie:$("#subcategorieCombo").val()} )
+  .done(function( data ) {
+$("#results").html(data);
+  });
+  } 
+    function SeachCameras(){
+    $.post( "admin/router.php", { c: "Search", f: "getCameras",dimensiune:$("#comboDimensiune").val(),Diametru:$("#comboDiametru").val(),TipValva:$("#comboTipValva").val()} )
+  .done(function( data ) {
+$("#results").html(data);
+  });
+  } 
+
+
+
+  //*****************************************************************************************************************************
   $( document ).ready(function() {
     getFilter("categorie");
         getFilter("Profil");

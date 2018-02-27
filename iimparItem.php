@@ -15,16 +15,17 @@ include_once('simple_html_dom.php');
     curl_setopt($login, CURLOPT_FOLLOWLOCATION, TRUE);
  $pagina=   curl_exec ($login);
 $source=str_get_html($pagina);
-$items =$source->find('div#tab-description',0)->find('tr'); 
+$items =$source->find('div#tab-description',0)->find('td'); 
 /*$sql="insert into rotis(id,produs,dimensiune,indici,aplicatie,price,rulare,franare,fundal) values('".$code[$i]."','".$producto["produs"]."','".$producto["dimensiune"]."','".$producto["indici"]."','".$producto["aplicatie"]."','".$producto["price"]."','".$producto["rulare"]."','".$producto["franare"]."','".$producto["fundal"]."')";
 $mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);*/
 //count($source->find('div#tab-description',0)->find('tr') );
 $r="";
+$i=array();
 foreach ($items as $item) {
-$r.= $item->plaintext;
+$i[]= $item->plaintext;
 }
 $source->clear();
-return $r;
+return $i;
 //$link= $item->find("div.image",0)->children(0)->href;
 //$image= $item->find("div.image",0)->children(0)->children(0)->src;
 //$price=$item->find("p.price",0)->children(0)->plaintext;
@@ -32,10 +33,13 @@ return $r;
 //$mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);
 }
 $mysqli = new mysqli("localhost", "root", "", "web"); 
-$sql="select * from impar where id>'1489'";
+$sql="select * from impaaccesories where subcategorie='Camere de aer'";
 $products=$mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);
 foreach ($products as $product) {
-$sql="update impar set data='".update($product['link'])."' where id='".$product['id']."'";
-$products=$mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+	$datos=update($product['link']);
+$sql="insert into aircameras (id,Dimensiune,Diametru,TipValva,BucBax) values('".$product['id']."','".trim($datos[1])."','".trim($datos[3])."','".trim($datos[5])."','".trim($datos[7])."')";
+
+$mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);
 }
+
 ?>

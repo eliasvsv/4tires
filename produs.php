@@ -119,7 +119,7 @@ $base="http://localhost/web";
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-				<a class="navbar-brand logo logoProd" href="index.html" title="Acasa"><img src="<?php echo $base;?>/img/4tires-logo.png" alt="4Tires.ro"></a>
+				<a class="navbar-brand logo logoProd" href="index.php" title="Acasa"><img src="<?php echo $base;?>/img/4tires-logo.png" alt="4Tires.ro"></a>
 				</div>
 				
 				<div class="col-md-8 alignright">

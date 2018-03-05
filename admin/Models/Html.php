@@ -100,7 +100,7 @@ public function topPremiun()	{
 		while ($fila = $data->fetch_assoc()) 
 		{
 			$result.="<div class=\"row\">";
-			$result.="<div  class=\"col-xs-4 crop\"><p><img class=\"avatar\" src=\"http://".$fila["image_url"]."\"></p></div>";
+			$result.="<div  class=\"col-xs-4 crop\"><p><img class=\"avatar\" alt='premiun' src=\"http://".$fila["image_url"]."\"></p></div>";
 			$result.="<div class=\"col-xs-4\">".$fila["Brand"]." ".$fila["Profil"]."</div>";
 			$result.="<div class=\"col-xs-4\"><h4 class=\"text-danger\">".$fila["price"]."</h4></div></div>";
 		}

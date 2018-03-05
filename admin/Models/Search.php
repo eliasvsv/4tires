@@ -136,7 +136,7 @@ $result.="<div class=\"col-md-3 product\"><article>
 		  
 		  	".$labes."
 		  	<button onclick=\"compare('".$fila["CODE"]."')\" class='btn btnBlack ' >Compare</button><button onclick=\"setBasket('".$fila['CODE']."',$('#qyt".$img."').val(),'".number_format($fila["price"]*1.01,2,'.','')."')\" class=\"btn btn-danger\">Buy</span></button>
-		  	<div class=\"fb-share-button\" data-href=\"http://localhost/web/\" data-layout=\"button_count\" data-size=\"small\" data-mobile-iframe=\"true\"><a target=\"_blank\" href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2Fweb%2F&amp;src=sdkpreparse\" class=\"fb-xfbml-parse-ignore\">Compartir</a></div>
+		  	 <div class=\"fb-share-button\" data-href=\"http://4tires.ro/index.php\" data-layout=\"button\" data-size=\"large\" data-mobile-iframe=\"true\"><a target=\"_blank\" href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F".$link."&amp;src=sdkpreparse\" class=\"fb-xfbml-parse-ignore\">Compartir</a></div>
 		 ".$fila['idSupplier']."</article> </div>";
 
 

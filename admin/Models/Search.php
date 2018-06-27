@@ -6,9 +6,11 @@ session_start();
 class Search 
 {
 	private $mysqli;
+	private $producto;
 	function __construct()
 	{
 	$this->mysqli = new Conexion();
+	$this->producto=new Products();
 	}
 public function searchProducts()
 	{	
@@ -67,21 +69,21 @@ public function searchProducts()
 			}
 		}
 		//******************************************
-	$sql2=$sql." and price>5  order by price asc";
+	$sql2=$sql." and price>5  order by price desc";
 
 		$data2 = $this->mysqli->retorno($sql2) or die(mysqli_error($this->mysqli));
 			$total=mysqli_num_rows($data2);
 			$paginas= ceil($total/24);
 			//echo mysqli_num_rows($data2);
 			if ($args[5]=='1') {
-			$sql.=" and price>5  order by price asc  limit ". ($args[5]*24)  ;
+			$sql.=" and price>5  order by price desc  limit ". ($args[5]*24)  ;
 		//echo $sql;
 			}
 			else{
 				$inicio=(($args[5]-1)*24)+1;
-					$sql.=" and price>5 order by price asc  limit ". $inicio .",24" ;
+					$sql.=" and price>5 order by price desc  limit ". $inicio .",24" ;
 			}
-			//echo $sql;
+			echo $sql;
 
 		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 		
@@ -293,7 +295,9 @@ $res="";
 			$res.="<div class=\"row\">
 					<div class='col-md-2'><img src=\"".$fila["image"]."\" alt=\"".$fila["desc"]." \" class=\"img-thumbnail\"></div>
 				<div class='col-md-6'><h3>".$fila["desc"]."</h3></div>
-				<div class='col-md-4'><h3><p class=\"text-danger\">".$fila["price"]."</p></div>
+				<div class='col-md-4'><h3><p class=\"text-danger\">".$fila["price"]."</p>
+				<button class='btn btnBlack ' >Compare</button><button class=\"btn btn-danger\">Buy</span></button>
+				</div>
 			</div>
 			";
 
@@ -360,7 +364,9 @@ $res="";
 			$res.="<div class=\"row\">
 					<div class='col-md-2'><img src=\"".$fila["image"]."\" alt=\"".$fila["desc"]."\" class=\"img-thumbnail\"></div>
 				<div class='col-md-6'><h3>".$fila["desc"]."</h3></div>
-				<div class='col-md-4'><h3><p class=\"text-danger\">".$fila["price"]."</p></div>
+				<div class='col-md-4'><h3><p class=\"text-danger\">".$fila["price"]."</p>
+				<button class='btn btnBlack ' >Compare</button><button class=\"btn btn-danger\">Buy</span></button>
+				</div>
 			</div>
 			";
 
@@ -371,6 +377,195 @@ $res="";
 
 return $res;
 }
+
+public function Listing()
+{
+		$args = func_get_args();
+		$ii= count($args);
+		$j=0;
+		$sql="	SELECT * FROM vwautoturisme ";
+	
+		//******************************************
+		if($args[2]<>''){
+			if ($j==0) {
+				$sql.=" where  latime='".$args[2]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  latime='".$args[2]."'";
+			}
+		}
+		//******************************************
+		if($args[3]<>''){
+			if ($j==0) {
+				$sql.=" where  inaltime='".$args[3]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  inaltime='".$args[3]."'";
+			}
+		}
+		//******************************************
+		if($args[4]<>''){
+			if ($j==0) {
+				$sql.=" where  radius='".$args[4]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  radius='".$args[4]."'";
+			}
+		}
+		//******************************************
+		if($args[6]<>''){
+			if ($j==0) {
+				$sql.=" where  categorie='".$args[6]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  categorie='".$args[6]."'";
+			}
+		}
+		if($args[7]<>''){
+			if ($j==0) {
+				$sql.=" where  sezon='".$args[7]."'";
+				$j=1;
+			}
+			else{
+				$sql.="and  sezon='".$args[7]."'";
+			}
+		}
+		//******************************************
+	$sql2=$sql." and price>5  order by price ASC";
+
+		$data2 = $this->mysqli->retorno($sql2) or die(mysqli_error($this->mysqli));
+			$total=mysqli_num_rows($data2);
+			$paginas= ceil($total/24);
+			//echo mysqli_num_rows($data2);
+			if ($args[5]=='1') {
+			$sql.=" and price>5 ORDER BY price DESC, stock ASC  "  ;
+		//echo $sql;
+			}
+			else{
+				$inicio=(($args[5]-1)*24)+1;
+					$sql.=" and price>5 ORDER BY price DESC, stock ASC   " ;
+			}
+			echo $sql;
+
+		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+		
+
+		//echo count($args);
+		$result=" ";
+		$msg="";
+		$img=0;
+	
+
+		while ($fila = $data->fetch_assoc()) 
+		{
+
+  $img2="".$fila["image_url"];
+
+				$labes="<div id=\"labels\"><div class=\"row\"><div class=\"col-md-4 petrol\"></div><div class=\"col-md-4 weat\"></div><div class=\"col-md-4 sound\"></div></div>    
+						<div class=\"row\"><div class=\"col-md-4 label-".trim($fila["rulare"])."\"></div><div class=\"col-md-4 label-".trim($fila["Franare"])."\"></div><div class=\"col-md-4\"><p class=\"text-left\">".$fila["fundal"]."dB</p></div></div> </div>";
+/*$button=" <span class=\"input-group-btn\">
+        <button onclick=\"setBasket('".$fila['CODE']."','1','".number_format($this->producto->getPrice($fila['CODE'],'2')*1.01,2,'.','')."')\"  class=\"btn btn-danger\" type=\"button\">Buy</button>
+      </span>
+  </div>";*/
+  $button=" <span class=\"input-group-btn\">
+        <button onclick=\"setBasket('".$fila['CODE']."','1','".number_format($fila['price']*1.01,2,'.','')."')\"  class=\"btn btn-danger\" type=\"button\">Buy</button>
+      </span>
+  </div>";
+
+				$link="".ucfirst(strtolower('anvelope'))."-".ucfirst(strtolower($fila['sezon']))."-".$fila['latime'].$fila['inaltime'].$fila['radius']."-".ucfirst(strtolower($fila['Brand']))."-".ucfirst(strtolower($fila['Profil']))."-".$fila['load_index']."-".$fila['speed_index']."-".$fila['CODE'].".html";
+
+				$twitter="<div id=\"widget\"><a class=\"twitter-share-button\"
+  href=\"https://twitter.com/intent/tweet?text=http://www.4tires.ro/$link&via=4tiresRO\"
+  data-size=\"large\">
+<img class='imgT' src='img/Twitter+Button.jpg'></a></div>";
+			$result.="<div class='row product'>
+					<div class='col-md-2 '>
+						<div class='crop'>
+							<p> 
+		 					 <img  data-toggle=\"modal\" data-target=\"#image".$img."\" src=\"".$img2."\" alt=\"Avatar\" class=\"image\"></p></div>
+						".$labes."	
+						</div>
+					<div class='col-md-5 '><h1 class='text-title' onclick='getProductById(\"".$link."\")'>Anvelope  ".ucfirst(strtolower($fila["categorie"]))." ".$fila["sezon"]."".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."  ".ucfirst(strtolower($fila["Brand"]))." ".ucfirst(strtolower($fila["Profil"]))." ".$fila["load_index"].$fila["speed_index"]."  </h1> $twitter
+					<div class='entypo-facebook'><div class=\"fb-share-button \" data-href=\"".$link."\" data-layout=\"button\" data-size=\"large\" data-mobile-iframe=\"true\"><a target=\"_blank\" href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F".$link."&layout=button&locale=ro_RO&mobile_iframe=true&sdk=joey&size=large\" class=\"fb-xfbml-parse-ignore\"><img class='fb-style' src='img/Facebook-share-button.png'></a></div></div>
+
+					</div>
+					<div class='col-md-2'>
+					<p class=\"text-price\">".number_format($fila['price']*1.01,2,'.','')." Lei</p>
+					<p class='text-success'>Pretul include <br> Eco Vloarea si T.V.A.</p><br>".$fila["idSupplier"]."
+					<button onclick=\"compare('".$fila["CODE"]."')\" class='btn btnBlack ' >Compara</button>		
+
+					</div>
+					<div class='col-md-3'>
+				<div class='row'><div class='col-md-12'>	<h4 id=stock>Stoc: ".$fila["stock"]." </h4> 
+
+				</div></div>
+					<div class='row'><div class='col-md-12'><br><br><br><br>$button </></div>		
+		  	 
+		  	 
+					</div>
+
+
+			 </div>";
+$table="<table class=\"table table-bordered\">
+<tr>
+	<th>Latime</th>
+	<td>".$fila["latime"]."</td>
+</tr>
+<tr>
+	<th>Inaltime</th>
+	<td>".$fila["inaltime"]."</td>
+</tr>
+<tr>
+	<th>Radius</th>
+	<td>".$fila["radius"]."</td>
+</tr>
+<tr>
+	<th>Speed Index</th>
+	<td>".$fila["speed_index"]."</td>
+</tr>
+<tr>
+	<th>load_index</th>
+	<td>".$fila["load_index"]."</td>
+</tr>
+
+</table>";
+
+ $result.="<div id=\"image".$img."\" class=\"modal fade bs-example-modal-sm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\">
+  <div class=\"modal-dialog modal-sm\" role=\"document\">
+    <div class=\"modal-content\">
+    <div class'row'>
+    	<div class='col-md-6'> <img src=\"".$fila["image_url"]."\"></div>
+    	<div class='col-md-6'> <div class=\"description\">
+					<div id=\"labelling-front\" style=\"\">
+                    <div class=\"labelBG\">
+                        <span class=\"plabel labelWet ".trim($fila["Franare"])." \"></span>
+                        <span class=\"plabel labelGrip". trim($fila["rulare"])." \"></span>
+                        <span class=\"plabel labelNoiseClass2\"></span>
+                        <span class=\"labelNoiseVal\"> ".trim($fila["fundal"])."</span>
+                    </div>
+                </div>
+				</div></div>
+    </div>
+    
+    
+     ".$table."
+    </div>
+  </div>
+
+</div><br><br>";
+
+			 $img++;
+	} 
+		//echo $sql;
+	
+		$result.="";	
+			return $result;
+}//end function
+
 
 
 

@@ -1,5 +1,5 @@
 <?php namespace Models;
-session_start();
+@session_start();
 /**
 * 
 */
@@ -160,103 +160,66 @@ public function searchProducts3()
 	$args = func_get_args();
 		$ii= count($args);
 		$j=0;
-		$sql="	SELECT * FROM vwautoturisme ";
+		$sql="	SELECT a.*,b.`name` FROM vwautoturisme a , suppliers b WHERE a.`idSupplier`= b.`id` ";
 		if($args[2]<>''){
-			if ($j==0) {
-				$sql.=" where latime='".$args[2]."'";
-				$j=1;
-			}
+			
+				$sql.=" and a.latime='".$args[2]."'";
+				
 		}
 		//******************************************
 		if($args[3]<>''){
-			if ($j==0) {
-				$sql.=" where  inaltime='".$args[3]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  inaltime='".$args[3]."'";
-			}
+			
+				$sql.="and  a.inaltime='".$args[3]."'";
+			
 		}
 		//******************************************
 		if($args[4]<>''){
-			if ($j==0) {
-				$sql.=" where  radius='".$args[4]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  radius='".$args[4]."'";
-			}
+			
+				$sql.="and  a.radius='".$args[4]."'";
+			
 		}
 		//******************************************
 		if($args[5]<>''){
-			if ($j==0) {
-				$sql.=" where  load_index='".$args[5]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  load_index='".$args[5]."'";
-			}
+			
+				$sql.="and  a.load_index='".$args[5]."'";
+			
 		}
 		//******************************************
 		if($args[6]<>''){
-			if ($j==0) {
-				$sql.=" where  speed_index='".$args[6]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  speed_index='".$args[6]."'";
-			}
+			
+				$sql.="and  a.speed_index='".$args[6]."'";
+			
 		}
 		//******************************************
 		if($args[7]<>''){
-			if ($j==0) {
-				$sql.=" where  categorie='".$args[7]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  categorie='".$args[7]."'";
-			}
+			
+				$sql.="and  a.categorie='".$args[7]."'";
+			
 		}
 		//******************************************
 		if($args[8]<>''){
-			if ($j==0) {
-				$sql.=" where  Brand='".$args[8]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  Brand='".$args[8]."'";
-			}
+			
+				$sql.="and  a.Brand='".$args[8]."'";
+			
 		}
 		//******************************************
 		if($args[9]<>''){
-			if ($j==0) {
-				$sql.=" where  Profil='".$args[9]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  Profil='".$args[9]."'";
-			}
+			
+				$sql.="and  a.Profil='".$args[9]."'";
+			
 		}
 		//******************************************
 		if($args[10]<>''){
-			if ($j==0) {
-				$sql.=" where  sezon='".$args[10]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  sezon='".$args[10]."'";
-			}
+			
+				$sql.="and  a.sezon='".$args[10]."'";
+			
 		}
-			if($args[11]<>''){
-			if ($j==0) {
-				$sql.=" where  idSupplier='".$args[12]."'";
-				$j=1;
-			}
-			else{
-				$sql.="and  idSupplier='".$args[12]."'";
-			}
+			if($args[12]<>'' and $args[12]<>6 ){
+			
+				$sql.="and  a.idSupplier='".$args[12]."'";
+			
 		}
-//echo $sql;
+$sql.="order by a.price ASC limit 100";
 
 
 $data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
@@ -272,11 +235,24 @@ $tabla ="<table class=\"table table-striped\">
 				<th>Brand</th>
 				<th>Profil</th>
 				<th>Sezon</th>
-				<th>Price</th>
+				<th>Furnizor</th>
+				<th>pret achizitie</th>
+				<th>adaaos %</th>
+				<th>Pret pe sit</th>
+				<th>Pret oferta</th>
+				<th>Durata oferta</th>
+				
 			</tr>";
 
 	while ($fila = $data->fetch_assoc()) 
 		{
+			$sql2="select price from offerts where idProduct='".$fila['CODE']."' order by id desc";
+$data2 = $this->mysqli->retorno($sql2) or die(mysqli_error($this->mysqli));
+	$item2 = $data2->fetch_assoc();
+			$price=$this->getPrice($fila['CODE'],$fila['idSupplier']);
+			$pp=$fila['price'];
+			$dif=$price-$pp;
+		@$av=($dif*100)/$pp;
 			$tabla.="<tr>
 						<td>".$fila['latime']."</td>
 						<td>".$fila['inaltime']."</td>
@@ -287,7 +263,15 @@ $tabla ="<table class=\"table table-striped\">
 						<td>".$fila['Brand']."</td>
 						<td>".$fila['Profil']."</td>
 						<td>".$fila['sezon']."</td>
-						<td onclick=\"editNexxon('".$fila['CODE']."')\">".$fila['price']."</td>
+						<td>".$fila["name"]."</td>
+						<td>".$pp."</td>
+						<td>".$av."</td>
+						<td ><button id='".$fila['CODE']."' class='btn btn-success' onclick=\"editNexxon('".$fila['CODE']."')\" >".$price."</button></td>
+						<td>".$item2["price"]."</td>
+						<td><button onclick=\"openModal('".$fila['CODE']."')\" type=\"button\" class=\"btn btn-danger\">
+  <span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span> data oferta
+</button>  </td>			
+						
 					 </tr>	";
 		}
 		$tabla.="</table>";
@@ -300,7 +284,7 @@ public function getProductById()
 		//$sql="select * from nexxon where code='".$args[2]."'";
 		$sql="SELECT * from vwautoturisme where CODE = '".$args[2]."'
 ";
-//echo $sql;
+echo $sql;
 
 		$result="";
 		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
@@ -391,8 +375,12 @@ public function getProfilCombo()
 public function updateNexxonProduct()
 {
 	$args = func_get_args();
-	$sql="update nexxon set descriere='".base64_encode($args[4])."',price=".$args[3]." WHERE code='".$args[2]."'";
+	$sql="update prices set isActive=0 WHERE idProduct='".$args[2]."'";
+	echo $sql;
 	$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+		$sql="insert into prices(idPrice,price,idProduct,isActive,idSupplier) values(0,'".$args[3]."','".$args[2]."',1,2)";
+		echo $sql;
+			$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 }
 
 public function updateNexxonDescriptions()
@@ -411,7 +399,8 @@ public function updateNexxonPrices(){
 public function createOffert()
 {
 	$args = func_get_args();
-	$sql="insert into offerts(id,dateStart,dateEnd) values(0,'".$args[2]."','".$args[3]."')";
+	$sql="insert into offerts(id,dateStart,dateEnd,idProduct,price) values(0,'".$args[2]."','".$args[3]."','".$args[4]."','".$args[5]."')";
+	echo $sql;
 	$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 	$id=mysqli_insert_id($this->mysqli);
 			foreach ($cart as $c=>$code) {
@@ -452,7 +441,15 @@ public function setPriceNexxon()
 OR brand LIKE '%".$args[8]."%' OR profil LIKE '%".$args[9]."%' OR sezon ='%".$args[10]."%'";
 	$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 }
+ public function getPrice($id,$supplier)
+ {
+ 	$sql="select price from prices where idProduct='".$id."' and idSupplier='".$supplier."' and isActive=1";
+ //	echo $sql;
+ 		$data=$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+	$item = $data->fetch_assoc();
+	return $item["price"];
 
+ }
 public function getImageDinamic(){
 	$vowels = array("(",")","+");
 
@@ -488,7 +485,11 @@ public function getSpeedIndex($value)
 	$item = $data->fetch_assoc();
 	return $item["kmh"];
 }
-
+public function deleteOfert(){
+		$args = func_get_args();
+		$sql="delete from offerts where id=".$args[2];
+		$this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+}
 }
 
 ?>

@@ -1,120 +1,206 @@
-<?php
-session_start();
-if (!isset($_SESSION["admin"])) {
-header('Location: login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>SB Admin - Bootstrap Admin Template</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <script src="../js/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-      body {
-  padding-top: 50px;
-}
-.starter-template {
-  padding: 100px 15px;
-  text-align: center;
-}
-#container{
-  padding-top: 50px;
-}
-.Product h3{
-color: #FF5656;
-}
-.modal-body {
-    max-height: 800px;
-}
-    </style>
-  </head>
 
-  <body>
+</head>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">SB Admin</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=products"><i class="fa fa-fw fa-bar-chart-o"></i> Products</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=users"><i class="fa fa-fw fa-table"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=oferts"><i class="fa fa-fw fa-edit"></i> Oferts</a>
+                    </li>
+          
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid"> <!--*********************************************************************************************************************************-->
+
+        <?php
+        if (isset($_GET["page"])) {
+            $page="html/".$_GET["page"].".php";
+            include($page);
+
+            # code...
+        }
+        ?>
+
+            </div>
+            <!-- /.container-fluid -->
+
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li role="presentation" class="dropdown active"  ><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" href="#">  Products <span class="caret"></span>   </a>
-    <ul class="dropdown-menu">
-    <li onclick="loadTemplate('nexxon')"><a href="#contact">Edit</a></li>
-     <li><a onclick="pricing()" href="#contact">Pricing</a></li>
-    </ul></a></li>
-            <li onclick="loadTemplate('descriptions')"><a href="#about">Descriptions</a></li>
-            <li role="presentation" class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" href="#">offers <span class="caret"></span>   </a>
-    <ul class="dropdown-menu">
-    <li onclick="newOffer()"><a href="#contact">New</a></li>
-     <li onclick="loadTemplate('editOffers')" ><a href="#contact">Edit</a></li>
-    </ul></a></li>
-           <li><a href="#contact">Orders</a></li>
-          <li><a href="#contact">Call Center</a></li>
-          <li><a href="#contact">Invoicing</a></li>
-          <li><a href="#contact">Pending Cash</a></li>
-          <li><a href="#contact">Pending Payments</a></li>
-          <li><a href="#contact">Delivery Handling</a></li>
-          <li><a href="#contact">Reports</a></li>
-          <li><a href="#contact">Tickets</a></li>
-          <li><a href="#contact">Credit Line</a></li>
-          <li><a href="#contact">SetUp</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-<div class="row starter-template">
-<div class="col-lg-1"></div>
-<div id='container' class="col-lg-10">
-  
+        <!-- /#page-wrapper -->
+
+    </div>
 
 
-</div>
-<div class="col-lg-1"></div>
 
- </div><!-- /.container -->
-<div class="row">
-  <div class="col-lg-2"></div>
-  <div id="results" class="col-lg-8">
-    
-  </div>
-  <div class="col-lg-2"></div>
-</div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script type="text/javascript">
+</body>
+<script type="text/javascript">
 function getFilter(filter){
     $.get( "router.php", { c: "Html", f: "getFilter",t:"h",p:filter } )
   .done(function( data ) {
@@ -164,10 +250,9 @@ $.post( "router.php", $("#searchForm").serializeArray())
 }
 function updateNexxonPrice()
 {
-  var content =tinymce.activeEditor.getContent({format: 'raw'});
-   $.post( "router.php", { c: "Products", f: "updateNexxonProduct",id: $("#code").val(),price: $("#price").val(),description: content  })
+   $.post( "router.php", { c: "Products", f: "updateNexxonProduct",id: $("#code").val(),price: $("#price").val() })
   .done(function( data ) {
-   
+search();
       }); 
      }
 function updateNexxonDescriptions()
@@ -216,9 +301,9 @@ function getPromo() {
   
 }
 function createOffer() {
-$.post( "router.php", { c: "Products", f: "createOffert",start: $("#dateStart").val(),end:$("#dateEnd").val() })
+$.post( "router.php", { c: "Products", f: "createOffert",start: $("#dateStart").val(),end:$("#dateEnd").val(),idProduct:$("#codeO").val(),price:$("#priceOffert").val() })
   .done(function( data ) {
-   
+   console.log("ok");
       }); 
 }
 function getSuppliers() {
@@ -239,11 +324,6 @@ $.post( "html/newOffer.php")
     $("#container").html(data);
       });   
 } 
-  $( document ).ready(function() {
-loadTemplate('nexxon');
-});
-
- 
 </script>
-  </body>
+
 </html>

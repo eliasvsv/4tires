@@ -1,30 +1,79 @@
 <?php
-include("simple_html_dom.php");/*
-$ch = curl_init();
-//curl_setopt($ch, CURLOPT_URL, 'http://www.acvila-romania.ro/cauta/?latime=215&inaltime=70&diametru=16&brand=Firestone&runflat=0&tip=autoturisme');
-curl_setopt($ch, CURLOPT_URL, 'http://www.canalrcn.com/los-reyes/capitulos/articulo-video/capitulo-3-de-marzo-beto-tranquiliza-natalia-por-lo-sucedido-6016');
-curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36');
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept-Language: es-es,en,ro'));
-curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+include("simple_html_dom.php");
+class envelope{
+  static function  login(){
+    $url="http://www.anvelope.biz/index.php?page=search";
+    $data="go_page=checkout&cs_customer_email=dan.florin%40acvila-romania.ro&cs_customer_password=cv4dst7";
+    $fp = fopen("cookie.txt", "w");
+    fclose($fp);
+    $login = curl_init();
+    curl_setopt($login, CURLOPT_COOKIEJAR,dirname(__FILE__). "/cookie.txt");
+    curl_setopt($login, CURLOPT_COOKIEFILE,dirname(__FILE__). "/cookie.txt");
+    curl_setopt($login, CURLOPT_TIMEOUT, 400000);
+    curl_setopt($login, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($login, CURLOPT_URL, $url);
+	curl_setopt($login, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36');
+    curl_setopt($login, CURLOPT_FOLLOWLOCATION, TRUE);
+    curl_setopt($login, CURLOPT_POST, TRUE);
+    curl_setopt($login, CURLOPT_POSTFIELDS, $data);
 
-$result = curl_exec($ch);
-$error = curl_error($ch);
-curl_close($ch);*/
-//preg_match_all("(<div class=\"prod-desc\">(.*)</div>)siU", $result, $matches);
-$html = file_get_html("http://www.canalrcn.com/los-reyes/capitulos/articulo-video/capitulo-14-de-febrero-nueva-vida-5976") ;
+   return curl_exec ($login);
 
-$i=$html->find('div.field-item', 1)->find('iframe',0);
-//preg_match_all($regex, $result, $matches);
+    curl_close ($login);
+  
+
+	}  	
+// adv_search=1&pass_value=1&skip=0&order=&deliveryaddress=&query=1757013&profil=-&class=-&speed=-&weight=-&min=&max=
+//  http://anvelope.biz/index.php?page=search&action=product
+    
+
+	static function grab_page($site,$data){
+  envelope::login();
+    $login = curl_init();
+    curl_setopt($login, CURLOPT_COOKIEFILE,dirname(__FILE__). "/cookie.txt");
+    curl_setopt($login, CURLOPT_TIMEOUT, 400000);
+    curl_setopt($login, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($login, CURLOPT_URL, $site);
+    curl_setopt($login, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36');
+    curl_setopt($login, CURLOPT_FOLLOWLOCATION, TRUE);
+    curl_setopt($login, CURLOPT_POST, TRUE);
+    curl_setopt($login, CURLOPT_POSTFIELDS, $data);
+
+    return curl_exec ($login);
+
+    curl_close ($login);
+	}
+
+    static function grab_pageGET($site){
+  envelope::login();
+    $login = curl_init();
+    curl_setopt($login, CURLOPT_COOKIEFILE,dirname(__FILE__). "/cookie.txt");
+    curl_setopt($login, CURLOPT_TIMEOUT, 400000);
+    curl_setopt($login, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($login, CURLOPT_URL, $site);
+    curl_setopt($login, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36');
+    curl_setopt($login, CURLOPT_FOLLOWLOCATION, TRUE);
+
+    return curl_exec ($login);
+
+    curl_close ($login);
+    }
+}
+$mysqli = new mysqli("localhost", "root", "", "web"); 
+$sql=" SELECT `Articol id` AS id FROM anvelope";
+$data = $mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+while ($id=$data->fetch_assoc()) {
+$source= envelope::grab_pageGET('http://www.anvelope.biz/index.php?page=print_product&id='.$id["id"]);
+
+
+$html = str_get_html($source) ;
+
+$imagen=$html->find('.ProductDetailPicture',0)->find("img",0);
+
+parse_str(parse_url($imagen->src,PHP_URL_QUERY),$output);
+
+echo $output["image"];
+}
+
+
 ?>
-
-<?php
-$html2= file_get_html("http:".$i->src);
-$video=$html2->find('meta', 19);
-
-
-?>
-<video controls>
-    <source src="<?php echo $video->content; ?>" type="application/x-mpegURL">
-</video>

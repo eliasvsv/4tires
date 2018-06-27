@@ -1,6 +1,6 @@
 <?php
 ini_set('memory_limit', '-1');
-$mysqli = new mysqli("localhost", "root", "realmadrid", "web");
+$mysqli = new mysqli("localhost", "root", "", "web");
 //http://www.nexxon.ro/anvelope.xml/516v93tS/autoturisme
 //http://www.nexxon.ro/anvelope.xml/516v93tS/autoutilitare
 //http://www.nexxon.ro/anvelope.xml/516v93tS/atv
@@ -16,7 +16,7 @@ $mysqli = new mysqli("localhost", "root", "realmadrid", "web");
 //militare
 //stivuitoare
 //remorci
-$html = file_get_contents("http://www.nexxon.ro/anvelope.xml/516v93tS/remorci");
+$html = file_get_contents("http://www.nexxon.ro/anvelope.xml/516v93tS/camioane");
 //$xml = simplexml_load_string($html);
 $xml = simplexml_load_string($html, 'SimpleXMLElement', LIBXML_NOCDATA);
 $xmlJson = json_encode($xml);

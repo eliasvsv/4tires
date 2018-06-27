@@ -21,11 +21,15 @@ $product = new Models\Html;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Importator si distribuitor de anvelope.Distribuim toata gama de anvelope pentru toate tipurile de autovehicule.Anvelope pentru autoturisme,4X4,autoutilitare,autocamioane,autocare,utilaje agricole, utilaje industriale.Anvelope pentru toate sezoanele vara,iarna si allseason.">
-    <meta name="keywords"  content="anvelope, cauciucuri, anvelope de iarna, anvelope iarna, cauciucuri iarna, pneuri auto, anvelope auto, anvelope de vara, anvelope ieftine, anvelope vara, anvelopa, preturi anvelope, cauciucuri vara, pneuri,anvelope autoturisme,anvelope 4x4,anvelope camioane,anvelope autobuz,anvelope industriale,anvelope agricole,camere de aer,acumulatori auto,bateri auto,acumulatori autoturisme,acumulatori camioane,acumulatori motociclete,jante auto,jante autoturisme,jante 4x4 ,jante aliaj, jante otel,jante tabla,lanturi antiderapante,lanturi autoutilitare,lanturi pentru anvelope,anvelope pentru autoturisme, anvelope pentru autoutilitare,anvelope pentru off road ,anvelope pentru camioane,anvelopepentru autojuse ,anvelope pentru utilaje industriale,anvelope pentru utilaje agricole ,anvelope pentru stiviutoare,anvelope pentru remorci,anvelope pentru utilaje forestiere,anvelope pentru remorci, hotel anvelope,accesorii auto, anvelope atv,anvelope pentru motociclete  " />
+
     <meta name="author" content="4tires">
 
-    <title>Home | 4Tires.ro</title>
+
+    <title>Anvelope lasi, anvelope timisoara, anvelope galati, anvelope ploesti</title>
+    <meta name="Description" content=""/>
+    <meta name="Keywords" content="anvelope lasi, anvelope timisoara, anvelope galati, anvelope ploesti, anvelope draden, anvelope all season, anvelope 4x4, anvelope tractor, anvelope industriale, buy anvelope tires"/>
+
+    <meta name="title" content="Importator si distribuitor de Anvelope">
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +58,8 @@ $product = new Models\Html;
     <script src="js/compare.js"></script>
       <link rel="stylesheet" href="css/busqueda.css">
       <link rel="stylesheet" type="text/css" href="css/labels.css">
-<!--      <link rel="stylesheet" type="text/css" href="https://cdn.tiresleader.com/static/css/style.css?5"> -->
+            <link rel="stylesheet" type="text/css" href="css/content.css">
+<!--     <link rel="stylesheet" type="text/css" href="https://cdn.tiresleader.com/static/css/style.css?5"> -->
       <style type="text/css">
 	#divboLoad_index{
 		width: 100px;
@@ -222,8 +227,18 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 #amp {
     margin-top: 5px;
 }
+.product h1{
+  font-size:16px;
+}
+.imagesX{
+      height: 100px;
+    width: 100px;
+}
+.principal{
+  background-color: #000;
+}
 </style>
-
+<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 </head>
 
 <body>
@@ -246,7 +261,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div  class="navbar-brand"><a href="tel:0744123000" ><span class="whiteBig">0744.123.000</span></a> <span>pentru comenzi online si informatii</span></div>
+                <div  class="navbar-brand"><a href="tel:0744123000" ><span class="whiteBig">+4 0754 200 195</span></a> <span>pentru comenzi online si informatii</span></div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -310,21 +325,27 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 	</div>		
 	   <!-- Page Content *********************************************************************************************** -->
 <div  class="row root">
-	<div class="col-md-12 principal"> 
+
+	<div class="col-md-12 contenedor"> 
        <div id="contenedor" class="row">
+          <div class="col-md-2">
+            <div id="checkup" class="row">
+              <div class="col-md-12">
+               <button onclick="getCheck()" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Checkout
+</button>
+<div class="collapse" id="collapseExample">
+  <div id="checkout" class="well">
+
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
          <div id="filtersArea" class="col-md-2 left-side ">
            <div class="panel panel-default">
               <div class="panel-body">
-                       <div class="panel panel-default">
-                            <div class="panel-heading">
-                              <h3 class="panel-title">Tip</h3>
-                            </div>
-                            <div class="panel-body">
-                              <div  class="list-group">
-                                 <?php     echo $product->getBrandsList(); ?>
-                              </div>
-                            </div>
-                        </div>
+                      
                                
                        <div class="panel panel-default">
                             <div class="panel-heading">
@@ -355,11 +376,31 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
                                  <?php     echo $product->getBlockAutoturisme('CAMIOANE'); ?>
                               </div>
                             </div>
-                        </div>             
+                        </div>  
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">anvelope Agricole</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div  class="list-group">
+                                 <?php     echo $product->getBlockAutoturisme('AGRICOLE'); ?>
+                              </div>
+                            </div>
+                        </div>
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Tip</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div  class="list-group">
+                                 <?php     echo $product->getBrandsList(); ?>
+                              </div>
+                            </div>
+                        </div>           
               </div>
           </div>
         </div>
-         <div id="searchArea " class="col-md-9 content">
+         <div id="searchArea " class="col-md-7 content">
 <!--*********************************************************************************************************-->         	
          <!--****************************************************************inicio menu busqueda--> 
 <!--*******************************************************new menu***********************************************************************--> 
@@ -368,12 +409,21 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 </div>
        <!--**************************************************fin busqueda***************************************************************************************-->   
            <div class="panel panel-default">
+            <div id="offerts" class="row">
+                     <div class="col-md-12">  <?php echo $product->getOfferts()?></div>
+            </div>
               <div  id="results" class="panel-body">
-                       Basic panel example
+         
+                      <?php echo $product->getMainContent();?>
+                       <?php echo $product->getAutolitare();?>
+                       <?php echo $product->getCamioane();?>
               </div>
-           </div>
+             <div id="face"></div>
+                        </div>
 </div>
            <!--***********************************-->
+<!--********************************************************************************************************************************************************************************-->
+<div class="col-md-1"></div>
               <div class="col-md-1">
           <div class="row">
                <div class="col-md-9"></div> 
@@ -381,6 +431,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
                <div> 
                    Compare
               </div>  
+             
               </div>
         </div>
       </div>
@@ -425,7 +476,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 	</div>
 	    <div class="col-md-2"></div>	
 	</div>   
-    <div class="row contenedor"  >
+    <div class="row "  >
       <div id="left" class="col-lg-1"></div>
       <div  id="results" class="col-lg-10"></div>
    
@@ -497,6 +548,8 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 				</div>
 			</div>
 	   </section>
+     <!-- Modal -->
+
    </footer>
     <!-- jQuery -->
     <script>
@@ -583,10 +636,12 @@ function getInaltime(filter){
   });
   }
  function setBasket(code,qyt,price){
- 	alert(qyt);
+
+
     $.post( "admin/router.php", { basket: "ok", f: "add",code:code,q:qyt,p:price } )
   .done(function( data ) {
    getBasket();
+
   });
   }
   function clearBasket(){
@@ -607,12 +662,19 @@ function getInaltime(filter){
    $("#divRadius").html(data);
   });
   } 
-   function getRadius2(filter,filter2){
-    $.get( "admin/router.php", { c: "Html", f: "getRadius2",t:"h",p:filter,p2:filter2 } )
+   function getRadius2(filter){
+    $.get( "admin/router.php", { c: "Html", f: "getRadius2",t:"h",p:filter } )
   .done(function( data ) {
    $("#divRadius").html(data);
   });
   } 
+  function checkLatime(){
+        $.get( "admin/router.php", { c: "Html", f: "checkLatime",t:"h",p:$("#comboLatime").val() } )
+  .done(function( data ) {
+getRadius2($('#comboLatime').val());
+ 
+  });
+  }
 function searchTyresBy() {
 $.post( "admin/router.php", $("#searchForm").serializeArray())
   .done(function( data ) {
@@ -670,13 +732,15 @@ function getProductById(id) {
 }
    function searchProducts(p){
 
-    $.post( "admin/router.php", { c: "Search", f: "searchProducts",latime:$("#comboLatime").val(),inaltime:$("#comboInaltime").val(),Radius:$("#comboRadius").val(),pag:p,categorie:$("#combocategorie").val(),sezon:'' } )
+    $.post( "admin/router.php", { c: "Search", f: "listing",latime:$("#comboLatime").val(),inaltime:$("#comboInaltime").val(),Radius:$("#comboRadius").val(),pag:p,categorie:$("#combocategorie").val(),sezon:$('input[name=sezon_radio]:checked').val() } )
   .done(function( data ) {
-$("#results").html(data);
+
+    $("#results").html(data);
+$("#offerts").hide();
   });
   }
     function searchProducts2(p,la,ina,ra,cat){
-    $.post( "admin/router.php", { c: "Search", f: "searchProducts",latime:la,inaltime:ina,Radius:ra,pag:p,categorie:cat } )
+    $.post( "admin/router.php", { c: "Search", f: "listing",latime:la,inaltime:ina,Radius:ra,pag:p,categorie:cat } )
   .done(function( data ) {
 $("#results").html(data);
   });
@@ -692,6 +756,13 @@ $("#results").html(data);
     $.post( "admin/router.php", { c: "Search", f: "getCameras",dimensiune:$("#comboDimensiune").val(),Diametru:$("#comboDiametru").val(),TipValva:$("#comboTipValva").val()} )
   .done(function( data ) {
 $("#results").html(data);
+  });
+  } 
+
+      function getCheck(){
+    $.get( "check.php",)
+  .done(function( data ) {
+$("#checkout").html(data);
   });
   } 
 
@@ -726,7 +797,9 @@ $( "#compareBasket" ).mouseleave(function() {
  });
 $("#divLatime").change(function(event){
   event.preventDefault();
- getInaltime($('#comboLatime').val());
+  checkLatime();
+  getInaltime($('#comboLatime').val()); 
+
  return false;
 });
 $("#divInaltime").change(function(event){
@@ -764,7 +837,14 @@ $(function() {
     ;
 });
 	</script>
-
+ <script type="text/javascript">
+function deleteItem(id) {
+  $.post( "admin/router.php", { basket: "ok", f: "deleteItem",code:id} )
+  .done(function( data ) {
+getCheck();
+  });
+}
+ </script>  
 </body>
 
 </html>

@@ -7,8 +7,14 @@ $args["c"]=$_GET["id"];
 $args["f"]=$_GET["id"];
 $args["id"]=$_GET["id"];
 $product=json_decode( call_user_func_array(array($test,"getProductById"),$args));
-$base="http://localhost/web";
-//$base="http://www.4tires.ro";
+//$base="http://localhost/web";
+$base="http://www.4tires.ro";
+$link="".ucfirst(strtolower('anvelope'))."-".ucfirst(strtolower($product->sezon))."-".$product->latime.$product->inaltime.$product->radius."-".ucfirst(strtolower($product->Brand))."-".ucfirst(strtolower($product->Profil))."-".$product->load_index."-".$product->speed_index."-".$product->CODE.".html";
+
+				$twitter="<div id=\"widget\"><a class=\"twitter-share-button\"
+  href=\"https://twitter.com/intent/tweet?text=Offert&via=4tiresRO\"
+  data-size=\"large\">
+Tweet</a></div>";
 }
 
  ?>
@@ -119,7 +125,7 @@ $base="http://localhost/web";
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-				<a class="navbar-brand logo logoProd" href="index.php" title="Acasa"><img src="<?php echo $base;?>/img/4tires-logo.png" alt="4Tires.ro"></a>
+				<a class="navbar-brand logo logoProd" href="http://localhost/index.php" title="Acasa"><img src="<?php echo $base;?>/img/4tires-logo.png" alt="4Tires.ro"></a>
 				</div>
 				
 				<div class="col-md-8 alignright">
@@ -159,14 +165,14 @@ $base="http://localhost/web";
 			<div class="col-md-4 single-left">
 				<div class="flexslider">
 					<ul class="slides">
-						<li data-thumb=<?php echo "http://".$product->image_url;?>>
-							<div class="thumb-image"> <img src=<?php echo "http://".$product->image_url;?> data-imagezoom="true" class="img-responsive" alt=""> </div>
+						<li data-thumb=<?php echo "".$product->image_url;?>>
+							<div class="thumb-image"> <img src=<?php echo $product->image_url;?> data-imagezoom="true" class="img-responsive" alt=""> </div>
 						</li>
-						<li data-thumb=<?php echo "http://".$product->image_url;?>>
-							 <div class="thumb-image"> <img src=<?php echo "http://".$product->image_url;?> data-imagezoom="true" class="img-responsive" alt=""> </div>
+						<li data-thumb=<?php echo $product->image_url;?>>
+							 <div class="thumb-image"> <img src=<?php echo $product->image_url;?> data-imagezoom="true" class="img-responsive" alt=""> </div>
 						</li>
-						<li data-thumb=<?php echo "http://".$product->image_url;?>>
-						   <div class="thumb-image"> <img src=<?php echo "http://".$product->image_url;?> data-imagezoom="true" class="img-responsive" alt=""> </div>
+						<li data-thumb=<?php echo $product->image_url;?>>
+						   <div class="thumb-image"> <img src=<?php echo $product->image_url;?> data-imagezoom="true" class="img-responsive" alt=""> </div>
 						</li> 
 					</ul>
 				</div>
@@ -211,9 +217,10 @@ $base="http://localhost/web";
                         <span class="plabel labelNoiseClass2"></span>
                         <span class="labelNoiseVal"><?php echo trim($product->fundal) ?></span>
                     </div>
-                </div>
-                <p>Anvelope pentru  <?php echo  $product->sezon ;?> cu dimensiunile (dimension of tires) pentru. Indicele de viteza este <?php echo  $product->speed_index ;?> iar acest lucru arata ca anvelopele permit o viteza maxima de  <?php echo $test->getSpeedIndex( $product->speed_index);?>. 
+                </div><?php echo $twitter;?><script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+                <p>Anvelope  <?php echo  $product->Brand. " ".$product->Profil ;?> pentru  <?php echo  $product->categorie." ". $product->Subgrupa ;?> cu dimensiunile  <?php echo  $product->latime."/".$product->inaltime.$product->radius ;?>  si Indicele de viteza este <?php echo  $product->speed_index ;?> iar acest lucru arata ca anvelopele permit o viteza maxima de  <?php echo $test->getSpeedIndex( $product->speed_index);?>. 
 Indicele de sarcina <?php echo $product->load_index;?> semnifica o capacitate de incarcare de <?php echo $test->getLoadIndex( $product->load_index);?> kilograme pe fiecare roata.</p>
+<p>Tags: Anvelope, <?php echo $product->sezon." ".$product->latime.", ".$product->inaltime." ,".$product->radius." ,".$product->Brand.", ".$product->Profil ;?></p>
 				</div>
 				<div class="color-quality">
 					<div class="color-quality-left">

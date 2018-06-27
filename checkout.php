@@ -17,6 +17,7 @@ if (isset($_SESSION['basket'])) {
 				</tr>
 				";
 		$mysqli= new mysqli("localhost","root",'' , "web");
+             // $mysqli= new mysqli("localhost","verpeli4_elias",'RealMadrid01' , "verpeli4_web");
 		foreach ($cart as $c=>$qyt) {
 		$sql="select * from vwautoturisme where CODE = '".$c."'";
 				//echo $sql;
@@ -222,10 +223,87 @@ width:24px;
     <!-- Page Content *********************************************************************************************** -->
 <div  class="row contenedor">
 	<div class="col-md-3">.</div>
-	<div class="col-md-6 principal"><?php echo $table;?><button type="button" class="btn btn-success">Checkout</button></div>
-	<div class="col-md-3">.</div>
+	<div class="col-md-6 principal"><?php echo $table;?><button  type="button" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-success">Checkout</button></div>
+	<div class="col-md-3">
+     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+           <table class="table">
+                        <tbody><tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 190px">
+                                Nume si prenume / Denumire firma
+                            </td>
+                            <td>
+                                <input name="txtName" type="text" id="txtName" style="width:370px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                CNP/C.U.I
+                            </td>
+                            <td>
+                                <input name="txtCnp" type="text" id="txtCnp" style="width:370px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Cantitate comandata
+                            </td>
+                            <td>
+                                <input name="txtQuantity" type="text" maxlength="2" id="txtQuantity" style="width:20px;">buc
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Adresa de livrare
+                            </td>
+                            <td>
+                                <input name="txtDeliveryAddress" type="text" id="txtDeliveryAddress" style="width:370px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Telefon
+                            </td>
+                            <td>
+                                <input name="txtPhone" type="text" id="txtPhone" style="width:370px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email
+                            </td>
+                            <td>
+                                <input name="txtEmail" type="text" id="txtEmail" style="width:370px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">
+                                Observatii
+                            </td>
+                            <td>
+                                <textarea name="txtObservation" rows="5" cols="67" id="txtObservation"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left; color: Red;">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left;">
+                                <button  class="btn btn-success">Trimite comanda</button>
+                            </td>
+                        </tr>
+                    </tbody></table>
+        </div>
+  </div>
+</div>   
+    </div>
 
-</di>
+</div>
    <footer>
    		<section class="bgr2">
 			<div class="container">

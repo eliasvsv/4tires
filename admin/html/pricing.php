@@ -1,6 +1,6 @@
 <?php
-require_once("../Models/Conexion.php");
-require_once("../Models/Html.php");
+require_once("Models/Conexion.php");
+require_once("Models/Html.php");
 $product = new Models\Html;
  
 
@@ -12,14 +12,6 @@ $product = new Models\Html;
 
 
 ?>
-  <script type="text/javascript" src="tinymce.min.js"></script>
-
-  <script type="text/javascript">
-    tinyMCE.init({
-      mode : "textareas",
-      plugins: 'textcolor'
-    });
-    </script>
 <style type="text/css">
 	#divLoad_index{
 		width: 100px;
@@ -39,8 +31,8 @@ $product = new Models\Html;
 }
 </style>
 <div class="row">
-	<div class="col-md-2"></div>
-	<div class="col-md-8 filters">
+	<div class="col-md-1"></div>
+	<div class="col-md-10 filters">
 		<div class="panel panel-default">
  			 <div class="panel-body">
     			<div id="comboSup"></div>
@@ -81,17 +73,17 @@ $product = new Models\Html;
 					 </div>
 				</td><input type="hidden" name="supplier" id="supplier" value="">
 					</form>
-				<td  align="right"> <button onclick="search()" type="button" class="btn btn-danger">Search</button> </td>
+				<td  align="right"> <button id="searchingBTN" onclick="search()" type="button" class="btn btn-danger">Search</button> </td>
 			</tr>
 		</table>
 	
 	</div>
-	<div class="col-md-2"></div>
+	<div class="col-md-1"></div>
 </div>
 <div class="row">
-	<div class="col-md-2"></div>
-	<div id="contentendor" class="col-md-8"></div>
-	<div class="col-md-2"></div>
+	<div class="col-md-1"></div>
+	<div id="contentendor" class="col-md-10"></div>
+	<div class="col-md-1"></div>
 </div>
 <script type="text/javascript">
 function search() {
@@ -115,7 +107,22 @@ $( document ).ready(function() {
  $("#supplier").val($('#comboSupplier').val());
  return false;
 });
+  $( function() {
+    $( "#dateStart" ).datepicker({
+  dateFormat: "yy-mm-dd"
 });
+  } );
+    $( function() {
+    $( "#dateEnd" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
+  } );
+});
+
+function openModal(code) {
+ $("#codeO").val(code); 
+$('#priceModal').modal('show');
+}
 </script>
 
 
@@ -124,7 +131,7 @@ $( document ).ready(function() {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Product</h4>
+        <h4 class="modal-title" id="myModalLabel">Create new price !!</h4>
       </div>
       <div class="modal-body">
       <div class="input-group">
@@ -132,8 +139,6 @@ $( document ).ready(function() {
   <input id="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
   <input type="hidden" name="code" id="code" value="">
   <span class="input-group-addon">.00</span>
-</div>
-     <textarea id="description"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -141,48 +146,31 @@ $( document ).ready(function() {
       </div>
     </div>
   </div>
-</div>
+</div></div>
 
 <!-- Modal create and edit price *************************************************************************************************************** -->
-<div class="modal fade" id="priceModal" tabindex="-1" role="dialog" aria-labelledby="priceModalLabel">
-  <div class="modal-dialog" role="document">
+<div id="priceModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="ModalLabel">Prices</h4>
-      </div>
-      <div class="modal-body">
-  <div class="row">
-  <table class="table">
-  		<tr>	
-  			<th>#</th>
-  			<th>Price</th>
-  			<th>isActive</th>
-
-  		</tr>
-    </table>
-  	
+      <div class="panel panel-default">
+  <div class="panel-heading">offer</div>
+  <form id="cOffert">
+  <div id="promoContent" class="panel-body">
+    Panel content
   </div>
-  <div class="row">
-  	<table class="table">
-  		<tr>	
-  			<th>Price</th>
-  			<th>isActive</th>
-  			<th></th>
-
-  		</tr>
-  		<tr>	
-  			<td> <input type="text" class="form-control" id="priceNew"></td>
-  			<td> <input type="radio" aria-label="Is Active"></td>
-  			<td> <button type="button" class="btn btn-success">save</button></td>
-
-  		</tr>
-    </table>
-  </div>	
+  <p>Date Start: <input type="text" id="dateStart"></p>
+    <p>Date End: <input type="text" id="dateEnd"></p>
+     <div class="input-group">
+  <span class="input-group-addon">€</span>
+  <input id="priceOffert" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <input type="hidden" name="codeO" id="codeO" value="">
+  <span class="input-group-addon">.00</span>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-           </div>
+   </form>   
+    <button type="button" onclick="cleanPromo()" class="btn btn-danger">Clean</button>
+    <button type="button" onclick="createOffer()" class="btn btn-success">Create offer</button>
+</div>
+  </div>
     </div>
   </div>
 </div>

@@ -20,6 +20,24 @@ public function login(){
 	 return $r;
 
 	}
+public function createUser(){
+$args = func_get_args();
+	$sql="insert into users (id,user,password) values(0,'".$args[2]."','".md5($args[3])."')";
+	$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+}// end function
+
+public function getUsers(){
+	$sql="SELECT * FROM  users";
+		$result="<table class='table table-bordered'>";
+		$result.="<tr><th>id</th><th>User</th><th>Edit</th><th>Delete </th><tr>";
+		$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
+		while ($fila = $data->fetch_assoc()) 
+		{
+			$result.="<tr><td>".$fila["id"]."</td><td>".$fila["user"]."</td><td><button type=\"button\"  class=\"btn btn-success\">Edit</button></td><td><button onclick=\"deleteOfert(".$fila['id'].")\" type=\"button\" class=\"btn btn-danger\"> <p class='fa fa-eraser'></p> </button></td></tr>";
+		}
+		$result.="</table>";
+		return $result;
+}
 
 	} //end class
 } // end namespace

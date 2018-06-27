@@ -222,38 +222,62 @@ $product = new Models\Html;
 	<div class="col-md-6 principal"> 
         <div class="panel panel-default">
   <div class="panel-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="registerForm"  name="registerForm">
                                           <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Full Name</label>
+                                        <label for="forname" class="col-sm-2 control-label">Nume si prenume / Denumire firma</label>
                                         <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="inputEmail3" placeholder="Full Name">
+                                          <input type="text" class="form-control" id="name" name="name" placeholder="Nume si prenume / Denumire firma">
                                         </div>
                                       </div>   
                                         <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
+                                        <label for="foradresa" class="col-sm-2 control-label">Adresa de livrare</label>
                                         <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="inputEmail3" placeholder="Address">
+                                          <input type="text" class="form-control" id="adresa" name="adresa" placeholder="Adresa de livrare">
                                         </div>
                                       </div> 
                                       <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                        <label for="email" class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-10">
-                                          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                                         <div class="col-sm-10">
-                                          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                         </div>
                                       </div>
+                                       <div class="form-group">
+                                        <label for="cnp" class="col-sm-2 control-label">CNP/C.U.I</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="cnp" name="cnp" placeholder="CNP/C.U.I">
+                                        </div>
+                                      </div> 
+                                       <div class="form-group">
+                                        <label for="cantitate" class="col-sm-2 control-label">Cantitate comandata</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="cantitate" name="cantitate" placeholder="Cantitate comandata">
+                                        </div>
+                                      </div> 
+                                       <div class="form-group">
+                                        <label for="telefon" class="col-sm-2 control-label">Telefon</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="telefon"  name="telefon" placeholder="Telefon">
+                                        </div>
+                                      </div> 
+                                       <div class="form-group">
+                                        <label for="observatii" class="col-sm-2 control-label">Observatii</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="observatii" name="observatii" placeholder="Observatii">
+                                        </div>
+                                      </div> 
                                       
-                                      <div class="form-group">
+                    </form>
+                    <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                          <button type="submit" class="btn btn-success">Create Account</button>
+                                          <button onclick="registerUser()" class="btn btn-success">Create Account</button>
                                         </div>
                                       </div>
-                    </form>
                      <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
@@ -334,7 +358,19 @@ $product = new Models\Html;
 	   </section>
    </footer>
    
+<script type="text/javascript">
+  $( document ).ready(function() {
 
+});
+function registerUser() {
+  /*
+$.post( "admin/router.php", $("#registerForm").serializeArray())
+  .done(function( data ) {
+
+  });*/
+  console.log($("#registerForm").serializeArray());
+}  
+</script>
 </body>
 
 </html>

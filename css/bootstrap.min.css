@@ -3571,7 +3571,7 @@ fieldset[disabled] .btn-default:hover {
 }
 .btn-primary {
     color: #fff;
-    background-color: #fefefe;
+    background-color: #ff4c4c;
     border-color: #2e6da4
 }
 .btn-primary.focus,
@@ -9543,6 +9543,13 @@ p.sbmincart-empty-text {
 		width: 2em;
 		height: 2em;
 	}
+    #face{
+        background: url(../img/img-sp.png) no-repeat -1px -131px;
+        display: block;
+        width: 10px
+        height:10px;
+        
+    }
 	.entypo-dribbble:before {
 		background: url(../img/img-sp.png) no-repeat -82px -131px;
 		width: 2em;

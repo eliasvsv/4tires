@@ -22,7 +22,7 @@ if (isset($_SESSION['compare'])) {
 				$r8="<tr><td>European Rating</td>";
 				while ($fila = $data->fetch_assoc()) {
 				$r1.="<td>".$fila["Brand"]."</td>";
-				$r2.="<td>".$fila["Profil"]."<br><img src=\"http://".$fila["image_url"]."\"height=\"100px\" width=\"50px\"></td>";
+				$r2.="<td>".$fila["Profil"]."<br><img src=\"".$fila["image_url"]."\"height=\"100px\" width=\"50px\"></td>";
 				$r3.="<td>".@number_format($fila["price"]."</td>",2,'.','');
 				$r4.="<td>".$fila["latime"]."/".$fila["inaltime"].$fila["radius"]."</td>";
 				$r5.="<td>".$fila["load_index"]."</td>";

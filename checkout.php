@@ -18,6 +18,7 @@ if (isset($_SESSION['basket'])) {
 				";
 		$mysqli= new mysqli("localhost","root",'' , "web");
              // $mysqli= new mysqli("localhost","verpeli4_elias",'RealMadrid01' , "verpeli4_web");
+        $totalComplete=0;
 		foreach ($cart as $c=>$qyt) {
 		$sql="select * from vwautoturisme where CODE = '".$c."'";
 				//echo $sql;
@@ -25,12 +26,13 @@ if (isset($_SESSION['basket'])) {
 				$fila=$data->fetch_assoc();
 				$vat=$fila["price"]*0.19;
 				$total=($fila["price"]*$qyt["q"])+($vat*$qyt["q"]);
+                $totalComplete=$total+$totalComplete;
 
 				$table.="<tr>
 							<td>$i</td>
 							<td><span id=\"code$i\">".$fila["CODE"]."</span></td>
 							<td>".$fila["latime"]."/".$fila["inaltime"].$fila["radius"]." ".$fila["Profil"]." ".$fila["Brand"]."</td>
-							<td>".$qyt['q']."</td>
+							<td><input type=\"q$i\" name=\"q$i\" value=\"".$qyt['q']."\"></td>
 							<td>".$fila["price"]."</td>
 							<td>".number_format($vat,2,'.','')."</td>
 							<td>".number_format($total,2,'.','')."</td>
@@ -45,8 +47,8 @@ if (isset($_SESSION['basket'])) {
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
-					<td></td>
+					<td>Total</td>
+					<td>".number_format($totalComplete,2,'.','')."</td>
 					<td></td>
 		   		</tr></table>";
 	
@@ -68,6 +70,7 @@ if (isset($_SESSION['basket'])) {
 <head>
 
     <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -134,8 +137,15 @@ height: 24px;
 float:left;
 width:24px; 
 }
+.juridica1{
+    display: none;
+}
+.juridica2{
+    display: block;
+}
 
     </style>
+
 </head>
 
 <body>
@@ -189,7 +199,7 @@ width:24px;
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-				<a class="navbar-brand logo logoProd" href="index.html" title="Acasa"><img src="img/4tires-logo.png" alt="4Tires.ro"></a>
+				<a class="navbar-brand logo logoProd" href="index.php" title="Acasa"><img src="img/4tires-logo.png" alt="4Tires.ro"></a>
 				</div>
 				
 				<div class="col-md-8 alignright">
@@ -228,76 +238,82 @@ width:24px;
      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-           <table class="table">
-                        <tbody><tr>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 190px">
-                                Nume si prenume / Denumire firma
-                            </td>
-                            <td>
-                                <input name="txtName" type="text" id="txtName" style="width:370px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                CNP/C.U.I
-                            </td>
-                            <td>
-                                <input name="txtCnp" type="text" id="txtCnp" style="width:370px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Cantitate comandata
-                            </td>
-                            <td>
-                                <input name="txtQuantity" type="text" maxlength="2" id="txtQuantity" style="width:20px;">buc
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Adresa de livrare
-                            </td>
-                            <td>
-                                <input name="txtDeliveryAddress" type="text" id="txtDeliveryAddress" style="width:370px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Telefon
-                            </td>
-                            <td>
-                                <input name="txtPhone" type="text" id="txtPhone" style="width:370px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email
-                            </td>
-                            <td>
-                                <input name="txtEmail" type="text" id="txtEmail" style="width:370px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="vertical-align: top;">
-                                Observatii
-                            </td>
-                            <td>
-                                <textarea name="txtObservation" rows="5" cols="67" id="txtObservation"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: left; color: Red;">
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: left;">
-                                <button  class="btn btn-success">Trimite comanda</button>
-                            </td>
-                        </tr>
-                    </tbody></table>
+          <div class="row">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                      <div class="row">
+                  <div class="col-md-12 text-center"><h3>Date de facturare</h3></div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">Doresc emiterea facturii pe: </div>
+                  <div class="col-md-4">
+                    <div class="checkbox">
+                        <label>
+                          <input type="radio" name="person" id="person" value="fizica"><label>Persoana Fizica</label> 
+                        </label>
+                    </div>
+                 </div>
+                  <div class="col-md-4">
+                      <div class="checkbox">
+                                <label>
+                                  <input type="radio" name="person" id="person" value="juridica"><label>Persoana Juridica</label> 
+                                </label>
+                        </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <form>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="nume" placeholder="Nume si prenume:">
+                          </div>
+                            <div class="fizica">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="denumire" placeholder="Denumire firma:">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="cuiCif" placeholder="CUI / CIF:">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="cuiCif" placeholder="Banca:">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="IBAN" placeholder="Cod IBAN:">
+                          </div>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="adresa" placeholder="Adresa de facturare: ">
+                          </div>
+                          <label><h3>Modalitati de plata:</h3></label>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> La adresa de facturare
+                            </label>
+                          </div>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> La alta adresa
+                            </label>
+                          </div>
+                          <label><h3>Mesajul tau:</h3></label>
+                          <label>Daca doresti sa ne oferi informatii suplimentare referitoare la comanda ta.</label>
+                          <textarea class="form-control" rows="5" id="comment"></textarea>
+                          <div class="row">
+                              <div class="col-md-6"><h5>Sumar comanda:</h5>
+                               <label> Produse:    </label><br>
+                                <label>Costuri livrare:    </label><br>
+                                <label>Reduceri:  </label><br>
+                                <label>TOTAL:  </label><br>
+                                </div>
+                              <div class="col-md-6"><br><br><br><button class="btn btn-danger">Trimite Comanda</button></div>
+                          </div>
+                         
+                      </form>
+                  </div>
+              </div>
+                  </div><!-- final del form-->
+                  <div class="col-md-3"></div>
+              </div>
         </div>
   </div>
 </div>   
@@ -376,6 +392,13 @@ function deleteItem(id) {
   });
 }
  	  $( document ).ready(function() {
+        $( "#person" ).click(function() {
+  $('#person').toggleClass('juridica1 juridica2');
+ // $("#compareBasket").show();
+
+
+ 
+});
  });
  </script>  
 

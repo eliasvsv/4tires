@@ -442,12 +442,12 @@ public function Listing()
 			$paginas= ceil($total/24);
 			//echo mysqli_num_rows($data2);
 			if ($args[5]=='1') {
-			$sql.=" and price>5 ORDER BY price DESC, stock ASC  "  ;
+			$sql.=" and price>5 ORDER BY price ASC,stock "  ;
 		//echo $sql;
 			}
 			else{
 				$inicio=(($args[5]-1)*24)+1;
-					$sql.=" and price>5 ORDER BY price DESC, stock ASC   " ;
+					$sql.=" and price>5 ORDER BY price ASC,stock   " ;
 			}
 			echo $sql;
 

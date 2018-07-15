@@ -59,6 +59,7 @@ $product = new Models\Html;
       <link rel="stylesheet" href="css/busqueda.css">
       <link rel="stylesheet" type="text/css" href="css/labels.css">
             <link rel="stylesheet" type="text/css" href="css/content.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <!--     <link rel="stylesheet" type="text/css" href="https://cdn.tiresleader.com/static/css/style.css?5"> -->
       <style type="text/css">
 	#divboLoad_index{
@@ -238,6 +239,43 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
   background-color: #000;
 }
 </style>
+<style type="text/css">
+     .barra{
+    line-height: 35px;
+    width: 100%;
+    background-color: #e1e1e1;
+    border-top: 1px solid #d1d1d1 !important;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    height: 35px;
+    padding: 0;
+    border: 0 none;
+    z-index: 100;
+    -webkit-box-shadow: 0px -1px 5px 0px rgba(196,196,196,0.6);
+    -moz-box-shadow: 0px -1px 5px 0px rgba(196,196,196,0.6);
+    box-shadow: 
+
+     }
+     .expanddash {
+    line-height: 35px;
+    width: 100%;
+    background-color: #e1e1e1;
+    border-top: 1px solid #97a5ad;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    height: 370px;
+    padding: 0;
+    border: 0 none;
+    z-index: 10000;
+    -webkit-box-shadow: 0px -1px 5px 0px rgba(196,196,196,0.6);
+    -moz-box-shadow: 0px -1px 5px 0px rgba(196,196,196,0.6);
+    box-shadow: }
+    .flecha{
+      margin-top: 0px;
+    }
+   </style>
 <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 </head>
 
@@ -311,7 +349,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
                         	<a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Favorite   </a>
                     	</li>
                     	<li>
-                        	<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cosul meu  <span id="basketN" class="badge">0</span> </a>
+                        	<a href="checkout.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cosul meu  <span id="basketN" class="badge">0</span> </a>
                         	
                     	</li>
 					</ul>
@@ -329,18 +367,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 	<div class="col-md-12 contenedor"> 
        <div id="contenedor" class="row">
           <div class="col-md-2">
-            <div id="checkup" class="row">
-              <div class="col-md-12">
-               <button onclick="getCheck()" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Checkout
-</button>
-<div class="collapse" id="collapseExample">
-  <div id="checkout" class="well">
-
-  </div>
-</div>
-              </div>
-            </div>
+          
           </div>
          <div id="filtersArea" class="col-md-2 left-side ">
            <div class="panel panel-default">
@@ -387,6 +414,26 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
                               </div>
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">anvelope 4x4</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div  class="list-group">
+                                 <?php     echo $product->getBlockAutoturisme('4x4'); ?>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">anvelope Industriale</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div  class="list-group">
+                                 <?php     echo $product->getBlockAutoturisme('INDUSTRIALE'); ?>
+                              </div>
+                            </div>
+                        </div>
                          <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">Tip</h3>
@@ -396,7 +443,8 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
                                  <?php     echo $product->getBrandsList(); ?>
                               </div>
                             </div>
-                        </div>           
+                        </div>
+
               </div>
           </div>
         </div>
@@ -425,15 +473,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 <!--********************************************************************************************************************************************************************************-->
 <div class="col-md-1"></div>
               <div class="col-md-1">
-          <div class="row">
-               <div class="col-md-9"></div> 
-               <div id="compareBasket" class="col-md-1" style="">
-               <div> 
-                   Compare
-              </div>  
-             
-              </div>
-        </div>
+          
       </div>
 <!--*************************************************************************************************************************************************************************************-->	
  <div class="wrapper">
@@ -447,35 +487,7 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
 
 
     <!-- Page Content ******************************************************************************************* -->
-    <div id="top" class="row  " >
-	<div class="col-md-2"></div>
-	<div class="col-md-8">
-		<div id="topSearch" class="col-sm-4 "><p>Top Premiun</p>
-			<div  class="row bloque">
-				<?php 
-				echo $product->topPremiun();
-				?>
-			</div>
-	</div>
-	<div id="ofer2" class="col-sm-4 "><p>Top Quality</p>
-			<div  class="row bloque">
-				<?php 
-				echo $product->topPremiun();
-				?>
-			</div>
-			
-	</div>
-	<div id="top-discount" class="col-sm-4 "><p>Top Discount</p>
-			<div  class="row bloque">
-				<?php 
-				echo $product->topPremiun();
-				?>
-			</div>
-			</div>
 
-	</div>
-	    <div class="col-md-2"></div>	
-	</div>   
     <div class="row "  >
       <div id="left" class="col-lg-1"></div>
       <div  id="results" class="col-lg-10"></div>
@@ -483,7 +495,19 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
     </div>
  
 <!-- Page Heading/Breadcrumbs -->
-      
+
+    <div id="compareBasket" class="row barra">
+     <div class="col-md-12 ">
+      <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2 text-center"><h1 class="flecha"><i class="fas fa-angle-up"></i></h1></div>
+        <div class="col-md-5 text-right"><h4><span class="badge">3</span>items</h4></div>
+      </div>
+      <div class="row">
+        <div id="compareBasket2" class="col-md-12"> <h4>compare</h4></div>
+      </div>
+     </div>
+   </div>   
    <footer>
    		<section class="bgr2">
 			<div class="container">
@@ -551,6 +575,8 @@ background: 	 url(images/switcher.png.pagespeed.ce.4_TMkUw9sf.png)
      <!-- Modal -->
 
    </footer>
+  
+
     <!-- jQuery -->
     <script>
 		
@@ -692,7 +718,7 @@ compareGet();
 function compareGet(){
   $.post( "compare/getBasket.php")
   .done(function( data ) {
-  $("#compareBasket").html(data);
+  $("#compareBasket2").html(data);
   });
 }
 function clearCompare(){
@@ -783,8 +809,8 @@ $("#checkout").html(data);
 getBasket();
 $("#top").hide();
 
-$( "#compareBasket" ).mouseenter(function() {
-  $('#compareBasket').toggleClass('col-md-1 col-md-3');
+$( "#compareBasket" ).click(function() {
+  $('#compareBasket').toggleClass('barra expanddash');
  // $("#compareBasket").show();
 
 

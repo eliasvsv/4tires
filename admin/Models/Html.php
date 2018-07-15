@@ -149,26 +149,11 @@ $i=1;
 	$data = $this->mysqli->retorno($sql) or die(mysqli_error($this->mysqli));
 		while ($fila = $data->fetch_assoc()) 
 		{
-			if($i>=5){
-				$more.=" <button onclick=\"searchProducts2('1','".$fila["latime"]."','".$fila["inaltime"]."','".$fila["radius"]."','".$cat."')\" type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."</button>";
-			}
-			else{
-				$result.=" <button onclick=\"searchProducts2('1','".$fila["latime"]."','".$fila["inaltime"]."','".$fila["radius"]."','".$cat."')\" type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."</button>";
-			}
 			
-			$i++;
+				$result.=" <button onclick=\"searchProducts2('1','".$fila["latime"]."','".$fila["inaltime"]."','".$fila["radius"]."','".$cat."')\" type=\"button\" class=\"list-group-item\"><span class=\"badge\">100</span>".$fila["latime"]."/".$fila["inaltime"]." ".$fila["radius"]."</button>";
+			
 		}
-		$result.="<button class=\"btn btn-primary list-group-item\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse$cat\" aria-expanded=\"false\" aria-controls=\"collapse$cat\">
-  Arata mai mult            <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>
-</button>
-<div class=\"collapse\" id=\"collapse$cat\">
-  <div class=\"well\">
-   ".$more."
-  </div>
-</div>
-
-";
-
+		
 		return $result;
 }//end function
 

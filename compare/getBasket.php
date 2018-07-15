@@ -15,7 +15,7 @@ if (isset($_SESSION['compare'])) {
 				$tire=$data->fetch_assoc();
 				$mysqli->close();
 
-			$r.="<tr><td><img height=\"42px\" width=\"42px\" src='http://".$tire["image_url"]."'></td><td>".$tire["latime"].$tire["inaltime"]."/".$tire["radius"]." ".$tire["load_index"].$tire["speed_index"]." ".$tire["Brand"]." ".$tire["Profil"]."</td></tr>";
+			$r.="<tr><td><img height=\"42px\" width=\"42px\" src='".$tire["image_url"]."'></td><td>".$tire["latime"].$tire["inaltime"]."/".$tire["radius"]." ".$tire["load_index"].$tire["speed_index"]." ".$tire["Brand"]." ".$tire["Profil"]."</td></tr>";
 						}
 		$r.="</table><button onclick='openCompare()'  class=\"btn btn-danger\">Compare</button><button onclick='clearCompare()'  class=\"btn btn-success\">Clear</button>";	
 }

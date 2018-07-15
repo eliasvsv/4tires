@@ -73,14 +73,6 @@
  	background-color: #FF5656;
  	color: #FFFFFF;
  }
- #compareBasket {
- 	position: fixed;
- 	right: 0;
- 	z-index:9999;
- 	border: #FF5656;
- 	background-color: #FFFFFF;
-
- }
 
  #divLatimeB{
 background-image: url("../images/vlargeur.jpg");

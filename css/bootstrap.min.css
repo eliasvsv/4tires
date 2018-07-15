@@ -6,8 +6,7 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
-  position: absolute;
-  left: -9999px;
+
 }
 [type="checkbox"]:not(:checked) + label,
 [type="checkbox"]:checked + label {
@@ -11124,7 +11123,7 @@ p.sbmincart-empty-text {
 }
 .checkbox input,.radio input {
     position: absolute;
-    left: -9999px;
+   
 }
 .checkbox input + i:after {
     content: '';

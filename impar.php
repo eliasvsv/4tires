@@ -4,7 +4,7 @@ $mysqli = new mysqli("localhost", "root", "", "web");
 require 'simple_html_dom.php';
 //require 'admin/oldscripts/envelope.php';
 //$url="https://www.impar.ro/ro/Anvelope-c61.html?limit=5000";
-$url="https://www.impar.ro/ro/Anvelope/Camion-c61c67.html?limit=999";
+$url="https://www.impar.ro/ro/Anvelope/Anvelope-autoturisme-c61c62.html?limit=5000";
 //$page= envelope\envelope::grab_pageGET($url);
 /**/
  $login = curl_init();
@@ -25,7 +25,7 @@ $desc= $item->find("h4",0)->plaintext;
 $link= $item->find("div.image",0)->children(0)->href;
 $image= $item->find("div.image",0)->children(0)->children(0)->src;
 $price=$item->find("p.price",0)->children(0)->plaintext;
-$sql="INSERT INTO `web`.`impar`(`id`,  `desc`,     `link`,          `image`, `price`) values(0,'".$desc."','".$link."','".$image."','".$price."')";
+$sql="INSERT INTO `web`.`impar_b`(`id`,  `desc`,     `link`,          `image`, `price`) values(0,'".$desc."','".$link."','".$image."','".$price."')";
 $mysqli->query($sql) or  trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($mysqli), E_USER_ERROR);
 }
 ?>

@@ -1,0 +1,8 @@
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /images/
+Disallow: /img/
+Disallow: /compare/
+Disallow: /bd/
+Disallow: /js
+Disallow: /backup/
